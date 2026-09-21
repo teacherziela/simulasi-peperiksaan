@@ -378,3 +378,10 @@ window.QUESTION_BANK_T2 = [
     explanation:'Keunikan masyarakat bumiputera dapat dilihat melalui adat, tarian, muzik, rumah tradisional dan kraftangan.'
   }
 ];
+
+// Imbangi kedudukan jawapan betul A–D walaupun tetapan rawak pilihan dimatikan.
+window.QUESTION_BANK_T2 = window.QUESTION_BANK_T2.map((q, index) => {
+  const shift = index % 4;
+  const options = q.options.slice(shift).concat(q.options.slice(0, shift));
+  return { ...q, options, answer: (q.answer - shift + 4) % 4 };
+});
