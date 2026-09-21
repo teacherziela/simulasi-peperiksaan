@@ -1,385 +1,520 @@
-// Sejarah Tingkatan 2 — bank soalan standard peperiksaan.
-// 5 soalan bagi setiap Bab 1–10. Aplikasi mengambil 2 soalan setiap bab
-// mengikut Set A/B/C/D, menjadikan tepat 20 soalan bagi setiap set.
+// SEJARAH TINGKATAN 2 — bank objektif standard peperiksaan.
+// Setiap bab mempunyai 5 item: 2 aras rendah, 2 aras sederhana, 1 aras tinggi.
+// Aplikasi membina setiap set 20 soalan dengan agihan 8 rendah + 8 sederhana + 4 tinggi.
+// Label aras ini tidak dipaparkan kepada murid.
 window.QUESTION_BANK_T2 = [
-  // BAB 1 — Kerajaan Alam Melayu
+  // ================= BAB 1 =================
   {
-    id:'t2-b1-01', chapter:'Bab 1', topic:'Konsep Alam Melayu',
+    id:'t2-b1-e1', chapter:'Bab 1', topic:'Konsep Alam Melayu', level:'rendah',
     question:'Apakah maksud Alam Melayu?',
-    options:['Kawasan tanah besar Asia Tenggara sahaja','Kawasan kepulauan Asia Tenggara sahaja','Kawasan yang merangkumi kepulauan dan tanah besar Asia Tenggara','Kawasan yang berada di bawah pengaruh kuasa Barat'],
+    options:[
+      'Kawasan tanah besar Asia Tenggara sahaja',
+      'Kawasan kepulauan Asia Tenggara sahaja',
+      'Kawasan yang merangkumi kepulauan dan tanah besar Asia Tenggara',
+      'Kawasan Asia Tenggara yang berada di bawah pengaruh Barat'
+    ],
     answer:2,
     explanation:'Alam Melayu merangkumi gugusan kepulauan dan tanah besar Asia Tenggara.'
   },
   {
-    id:'t2-b1-02', chapter:'Bab 1', topic:'Konsep Alam Melayu',
+    id:'t2-b1-e2', chapter:'Bab 1', topic:'Konsep Alam Melayu', level:'rendah',
     question:'Siapakah tokoh Barat yang mengemukakan konsep Alam Melayu?',
     options:['George Coedès','Alfred Russel Wallace','Paul Wheatley','R. O. Winstedt'],
     answer:1,
     explanation:'Alfred Russel Wallace ialah antara tokoh Barat yang mengemukakan konsep Alam Melayu.'
   },
   {
-    id:'t2-b1-03', chapter:'Bab 1', topic:'Kerajaan Alam Melayu',
+    id:'t2-b1-m1', chapter:'Bab 1', topic:'Kerajaan Masyhur', level:'sederhana',
     question:'Maklumat berikut berkaitan peluasan kuasa kerajaan Funan.',
-    context:['Wilayah di bahagian selatan Myanmar berjaya dikuasai.'],
-    options:['Membolehkan Funan menguasai jalan perdagangan utama','Menyebabkan Funan memindahkan pusat pemerintahannya','Menghapuskan hubungan Funan dengan kerajaan luar','Menyebabkan kegiatan pertanian Funan terhenti'],
+    context:['Funan berjaya menguasai wilayah di bahagian selatan Myanmar.'],
+    options:[
+      'Menguasai jalan perdagangan yang penting',
+      'Memindahkan pusat pemerintahan ke kawasan pedalaman',
+      'Mengurangkan hubungan dengan pedagang asing',
+      'Menghentikan kegiatan perdagangan maritim'
+    ],
     answer:0,
     explanation:'Penguasaan wilayah strategik membantu Funan menguasai laluan perdagangan utama.'
   },
   {
-    id:'t2-b1-04', chapter:'Bab 1', topic:'Kerajaan Masyhur',
+    id:'t2-b1-m2', chapter:'Bab 1', topic:'Kerajaan Masyhur', level:'sederhana',
     question:'Siapakah pengasas kerajaan Srivijaya pada tahun 683 M?',
-    options:['Dapunta Hyang Sri Jayanasa','Jayavarman II','Patih Gajah Mada','Sangramadhananjaya'],
-    answer:0,
+    options:['Jayavarman II','Patih Gajah Mada','Dapunta Hyang Sri Jayanasa','Sangramadhananjaya'],
+    answer:2,
     explanation:'Dapunta Hyang Sri Jayanasa dikaitkan dengan pengasasan dan peluasan Srivijaya pada abad ketujuh.'
   },
   {
-    id:'t2-b1-05', chapter:'Bab 1', topic:'Pemerintahan Kerajaan Alam Melayu',
-    question:'Gelaran Cakravatin digunakan oleh pemerintah sebuah kerajaan Alam Melayu. Kerajaan manakah yang dimaksudkan?',
-    options:['Funan','Angkor','Srivijaya','Majapahit'],
-    answer:1,
-    explanation:'Gelaran Cakravatin dikaitkan dengan pemerintahan kerajaan Angkor.'
+    id:'t2-b1-h1', chapter:'Bab 1', topic:'Kegemilangan Kerajaan Alam Melayu', level:'tinggi',
+    question:'Bagaimanakah kedudukan kerajaan seperti Funan dan Srivijaya membantu kerajaan tersebut menjadi masyhur?',
+    options:[
+      'Mengawal laluan perdagangan strategik dan membina hubungan dengan kerajaan luar',
+      'Mengurangkan kemasukan pedagang bagi melindungi pasaran tempatan',
+      'Menumpukan kegiatan ekonomi kepada pertanian sara diri sahaja',
+      'Memindahkan petempatan utama jauh daripada sungai dan pesisir'
+    ],
+    answer:0,
+    explanation:'Kedudukan strategik membolehkan kerajaan menguasai laluan perdagangan dan membina hubungan luar yang mengukuhkan kemasyhuran.'
   },
 
-  // BAB 2 — Sistem Pemerintahan dan Kegiatan Ekonomi
+  // ================= BAB 2 =================
   {
-    id:'t2-b2-01', chapter:'Bab 2', topic:'Sistem Pemerintahan',
+    id:'t2-b2-e1', chapter:'Bab 2', topic:'Sistem Pemerintahan', level:'rendah',
     question:'Apakah sistem pemerintahan yang diamalkan oleh kerajaan-kerajaan Alam Melayu?',
-    options:['Republik','Demokrasi langsung','Pemerintahan beraja','Oligarki'],
-    answer:2,
+    options:['Oligarki','Autokrasi','Demokrasi langsung','Pemerintahan beraja'],
+    answer:3,
     explanation:'Kerajaan Alam Melayu mengamalkan sistem pemerintahan beraja.'
   },
   {
-    id:'t2-b2-02', chapter:'Bab 2', topic:'Kegiatan Ekonomi',
+    id:'t2-b2-e2', chapter:'Bab 2', topic:'Kegiatan Pertanian', level:'rendah',
     question:'Pemerintah Angkor membina baray. Apakah kepentingan binaan tersebut?',
-    options:['Menjadi pusat pentadbiran kerajaan','Memastikan bekalan air mencukupi untuk pertanian','Menjadi pelabuhan utama pedagang asing','Mengawal laluan perdagangan laut'],
-    answer:1,
-    explanation:'Baray berfungsi sebagai takungan air yang penting untuk kegiatan pertanian.'
+    options:[
+      'Memastikan bekalan air mencukupi untuk pertanian',
+      'Menjadi pusat penyimpanan barang dagangan',
+      'Menjadi kubu utama pertahanan kerajaan',
+      'Menjadi tempat kediaman golongan pembesar'
+    ],
+    answer:0,
+    explanation:'Baray ialah takungan air yang penting untuk kegiatan pertanian.'
   },
   {
-    id:'t2-b2-03', chapter:'Bab 2', topic:'Hasil Hutan',
-    question:'Jadual berikut menunjukkan hasil hutan Alam Melayu.',
+    id:'t2-b2-m1', chapter:'Bab 2', topic:'Hasil Hutan', level:'sederhana',
+    question:'Maklumat berikut berkaitan hasil hutan Alam Melayu.',
     context:['Gaharu — Sungai Mekong, Tanah Melayu dan Sumatera','Kapur barus — Sumatera dan Borneo'],
-    options:['Digunakan sebagai bahan pewangi','Digunakan sebagai makanan ruji','Digunakan untuk menghasilkan senjata','Digunakan sebagai alat pertukaran rasmi kerajaan'],
+    options:[
+      'Digunakan sebagai bahan pewangi',
+      'Digunakan sebagai bahan binaan kapal',
+      'Digunakan sebagai makanan ruji',
+      'Digunakan sebagai alat pembayaran cukai'
+    ],
     answer:0,
     explanation:'Gaharu dan kapur barus mendapat permintaan tinggi antaranya kerana digunakan sebagai bahan pewangi.'
   },
   {
-    id:'t2-b2-04', chapter:'Bab 2', topic:'Pentadbiran Pusat dan Wilayah',
+    id:'t2-b2-m2', chapter:'Bab 2', topic:'Pentadbiran Pusat dan Wilayah', level:'sederhana',
     question:'Mengapakah pembesar penting dalam sistem pemerintahan kerajaan Alam Melayu?',
-    options:['Mereka menggantikan raja sebagai pemerintah utama','Mereka membantu raja mengurus pentadbiran pusat dan wilayah','Mereka menentukan hubungan luar tanpa persetujuan raja','Mereka menguasai semua hasil perdagangan persendirian'],
-    answer:1,
+    options:[
+      'Membantu raja mengurus pentadbiran pusat dan wilayah',
+      'Menggantikan kedudukan raja dalam semua urusan pemerintahan',
+      'Menentukan dasar luar tanpa persetujuan pemerintah',
+      'Menguasai semua hasil perdagangan untuk kepentingan sendiri'
+    ],
+    answer:0,
     explanation:'Pembesar membantu raja mengurus pentadbiran dan melaksanakan tugas di pusat serta wilayah.'
   },
   {
-    id:'t2-b2-05', chapter:'Bab 2', topic:'Perdagangan',
-    question:'Apakah faktor yang paling berkaitan dengan perkembangan pelabuhan kerajaan Alam Melayu?',
-    options:['Kedudukan strategik pada laluan perdagangan','Penggunaan mata wang Barat','Larangan pedagang asing singgah','Pengurangan hasil pertanian tempatan'],
+    id:'t2-b2-h1', chapter:'Bab 2', topic:'Pemerintahan dan Ekonomi', level:'tinggi',
+    question:'Bagaimanakah sistem pemerintahan yang teratur dapat membantu perkembangan kegiatan ekonomi kerajaan Alam Melayu?',
+    options:[
+      'Pentadbiran yang tersusun memudahkan pengurusan hasil, keselamatan dan perdagangan',
+      'Pembesar mengambil alih semua kegiatan ekonomi daripada rakyat',
+      'Kerajaan mengehadkan hubungan perdagangan dengan kawasan luar',
+      'Raja menumpukan pentadbiran kepada upacara istana sahaja'
+    ],
     answer:0,
-    explanation:'Kedudukan strategik pada laluan perdagangan membantu pelabuhan Alam Melayu berkembang.'
+    explanation:'Pentadbiran yang teratur menyokong keselamatan, pengurusan hasil dan kelancaran perdagangan.'
   },
 
-  // BAB 3 — Sosiobudaya Masyarakat Kerajaan Alam Melayu
+  // ================= BAB 3 =================
   {
-    id:'t2-b3-01', chapter:'Bab 3', topic:'Bahasa dan Tulisan',
+    id:'t2-b3-e1', chapter:'Bab 3', topic:'Bahasa', level:'rendah',
     question:'Apakah bahasa yang berperanan penting sebagai bahasa perhubungan di Alam Melayu?',
     options:['Bahasa Sanskrit','Bahasa Melayu','Bahasa Tamil','Bahasa Cina'],
     answer:1,
     explanation:'Bahasa Melayu berkembang sebagai bahasa perhubungan penting di Alam Melayu.'
   },
   {
-    id:'t2-b3-02', chapter:'Bab 3', topic:'Tulisan',
+    id:'t2-b3-e2', chapter:'Bab 3', topic:'Tulisan', level:'rendah',
     question:'Antara berikut, yang manakah tulisan yang digunakan oleh masyarakat kerajaan Alam Melayu?',
     context:['I Pallava','II Kawi','III Kuneiform','IV Hieroglif'],
     options:['I dan II','I dan IV','II dan III','III dan IV'],
     answer:0,
-    explanation:'Tulisan Pallava dan Kawi digunakan dalam perkembangan persuratan Alam Melayu.'
+    explanation:'Tulisan Pallava dan Kawi digunakan dalam perkembangan bahasa dan persuratan Alam Melayu.'
   },
   {
-    id:'t2-b3-03', chapter:'Bab 3', topic:'Persuratan',
+    id:'t2-b3-m1', chapter:'Bab 3', topic:'Persuratan', level:'sederhana',
     question:'Penemuan batu bersurat membuktikan perkembangan aspek apakah dalam masyarakat kerajaan Alam Melayu?',
-    options:['Persuratan','Perkapalan','Pertanian','Ketenteraan'],
+    options:['Bahasa dan persuratan','Pertanian dan penternakan','Perkapalan dan pelayaran','Ketenteraan dan pertahanan'],
     answer:0,
     explanation:'Batu bersurat menjadi bukti perkembangan bahasa, tulisan dan persuratan.'
   },
   {
-    id:'t2-b3-04', chapter:'Bab 3', topic:'Seni Bina',
-    question:'Candi Borobudur menunjukkan keupayaan masyarakat kerajaan Alam Melayu dalam bidang',
-    options:['seni bina','pelayaran','perundangan','penternakan'],
+    id:'t2-b3-m2', chapter:'Bab 3', topic:'Seni Bina', level:'sederhana',
+    question:'Apakah yang dapat disimpulkan daripada pembinaan candi seperti Borobudur?',
+    options:[
+      'Masyarakat mempunyai kemahiran tinggi dalam seni bina',
+      'Masyarakat bergantung sepenuhnya pada teknologi luar',
+      'Kegiatan persuratan tidak berkembang dalam kerajaan',
+      'Struktur sosial masyarakat tidak mempunyai pembahagian tugas'
+    ],
     answer:0,
-    explanation:'Candi Borobudur ialah contoh pencapaian seni bina yang tinggi.'
+    explanation:'Pembinaan candi menunjukkan kemahiran tinggi masyarakat dalam seni bina dan organisasi kerja.'
   },
   {
-    id:'t2-b3-05', chapter:'Bab 3', topic:'Struktur Sosial',
-    question:'Maklumat berikut berkaitan struktur sosial masyarakat kerajaan Alam Melayu.',
-    context:['I Raja','II Pembesar','III Rakyat','IV Hamba'],
-    options:['I dan II ialah golongan pemerintah','I dan III ialah golongan pemerintah','II dan IV ialah golongan pemerintah','III dan IV ialah golongan pemerintah'],
+    id:'t2-b3-h1', chapter:'Bab 3', topic:'Bahasa, Tulisan dan Persuratan', level:'tinggi',
+    question:'Bagaimanakah perkembangan bahasa, tulisan dan persuratan membantu mengukuhkan sesebuah kerajaan Alam Melayu?',
+    options:[
+      'Memudahkan penyampaian maklumat, pencatatan dan urusan pentadbiran',
+      'Menggantikan sepenuhnya peranan pembesar dalam pemerintahan',
+      'Mengurangkan hubungan kerajaan dengan masyarakat luar',
+      'Menyebabkan kegiatan ekonomi hanya tertumpu pada pertanian'
+    ],
     answer:0,
-    explanation:'Raja dan pembesar tergolong dalam golongan pemerintah.'
+    explanation:'Bahasa dan tulisan membantu pencatatan, penyampaian maklumat serta urusan pentadbiran dan keagamaan.'
   },
 
-  // BAB 4 — Agama, Kepercayaan dan Keunikan Warisan
+  // ================= BAB 4 =================
   {
-    id:'t2-b4-01', chapter:'Bab 4', topic:'Kepercayaan Awal',
+    id:'t2-b4-e1', chapter:'Bab 4', topic:'Animisme', level:'rendah',
     question:'Apakah yang dimaksudkan dengan animisme?',
-    options:['Kepercayaan bahawa unsur alam dan benda mempunyai roh','Kepercayaan terhadap kuasa raja sebagai dewa','Kepercayaan terhadap satu sistem perundangan','Kepercayaan terhadap kuasa perdagangan'],
+    options:[
+      'Kepercayaan bahawa unsur alam dan benda mempunyai roh',
+      'Kepercayaan terhadap kuasa perdagangan',
+      'Kepercayaan bahawa raja dipilih oleh rakyat',
+      'Kepercayaan bahawa tulisan menentukan kedudukan seseorang'
+    ],
     answer:0,
     explanation:'Animisme ialah kepercayaan bahawa unsur alam atau benda mempunyai roh.'
   },
   {
-    id:'t2-b4-02', chapter:'Bab 4', topic:'Kepercayaan Awal',
+    id:'t2-b4-e2', chapter:'Bab 4', topic:'Dinamisme', level:'rendah',
     question:'Apakah maksud dinamisme?',
-    options:['Kepercayaan bahawa semua raja bersifat suci','Kepercayaan terhadap kuasa atau semangat ghaib pada sesuatu','Kepercayaan bahawa perdagangan menentukan kedudukan sosial','Kepercayaan bahawa semua masyarakat mesti menganut agama yang sama'],
-    answer:1,
+    options:[
+      'Kepercayaan terhadap kuasa atau semangat ghaib',
+      'Kepercayaan terhadap sistem pemerintahan beraja',
+      'Kepercayaan terhadap perdagangan sebagai sumber kuasa',
+      'Kepercayaan terhadap satu bentuk tulisan rasmi'
+    ],
+    answer:0,
     explanation:'Dinamisme merujuk kepercayaan terhadap kuasa atau semangat ghaib.'
   },
   {
-    id:'t2-b4-03', chapter:'Bab 4', topic:'Perkembangan Agama',
+    id:'t2-b4-m1', chapter:'Bab 4', topic:'Peranan Pemerintah', level:'sederhana',
     question:'Bagaimanakah pemerintah kerajaan Alam Melayu membantu perkembangan agama?',
-    options:['Membina tempat ibadat dan menyokong kegiatan keagamaan','Menutup hubungan dengan kerajaan luar','Melarang pembinaan monumen keagamaan','Menghapuskan semua adat tempatan'],
+    options:[
+      'Membina tempat ibadat dan menyokong kegiatan keagamaan',
+      'Menutup hubungan dengan kerajaan luar',
+      'Menghapuskan semua adat masyarakat tempatan',
+      'Melarang pembinaan monumen keagamaan'
+    ],
     answer:0,
     explanation:'Pemerintah membantu perkembangan agama melalui pembinaan tempat ibadat dan sokongan terhadap kegiatan keagamaan.'
   },
   {
-    id:'t2-b4-04', chapter:'Bab 4', topic:'Kedatangan Islam',
-    question:'Apakah saluran penting yang membantu penyebaran Islam ke Alam Melayu?',
-    options:['Hubungan perdagangan dengan pedagang Islam','Penutupan pelabuhan tempatan','Pengasingan kerajaan daripada dunia luar','Penghapusan kegiatan persuratan'],
+    id:'t2-b4-m2', chapter:'Bab 4', topic:'Kedatangan Islam', level:'sederhana',
+    question:'Mengapakah hubungan perdagangan penting dalam perkembangan Islam di Alam Melayu?',
+    options:[
+      'Pedagang Islam membawa bersama agama dan budaya ketika berdagang',
+      'Pedagang asing menggantikan pemerintah tempatan',
+      'Perdagangan menyebabkan semua pelabuhan ditutup kepada bukan Islam',
+      'Hubungan dagang menghapuskan terus kepercayaan tempatan'
+    ],
     answer:0,
     explanation:'Hubungan perdagangan menjadi salah satu saluran penting penyebaran Islam ke Alam Melayu.'
   },
   {
-    id:'t2-b4-05', chapter:'Bab 4', topic:'Keunikan Warisan',
-    question:'Mengapakah warisan masyarakat kerajaan Alam Melayu mempunyai identiti tersendiri?',
-    options:['Pengaruh luar disesuaikan dengan budaya tempatan','Semua pengaruh luar ditolak sepenuhnya','Budaya tempatan digantikan sepenuhnya oleh budaya luar','Setiap kerajaan menggunakan satu adat yang sama'],
+    id:'t2-b4-h1', chapter:'Bab 4', topic:'Keunikan Warisan', level:'tinggi',
+    question:'Bagaimanakah masyarakat Alam Melayu dapat menerima pengaruh Hindu, Buddha dan Islam tanpa kehilangan identiti tempatan?',
+    options:[
+      'Menyesuaikan pengaruh luar dengan adat dan budaya tempatan',
+      'Menggantikan semua budaya tempatan dengan budaya luar',
+      'Mengasingkan masyarakat daripada kerajaan luar',
+      'Menghapuskan semua bentuk kepercayaan yang pernah diamalkan'
+    ],
     answer:0,
-    explanation:'Masyarakat Alam Melayu menyesuaikan pengaruh luar dengan budaya tempatan.'
+    explanation:'Keunikan warisan terbentuk apabila pengaruh luar disesuaikan dengan budaya tempatan.'
   },
 
-  // BAB 5 — Kesultanan Melayu Melaka
+  // ================= BAB 5 =================
   {
-    id:'t2-b5-01', chapter:'Bab 5', topic:'Pengasasan Melaka',
+    id:'t2-b5-e1', chapter:'Bab 5', topic:'Pengasasan Melaka', level:'rendah',
     question:'Siapakah pengasas Kesultanan Melayu Melaka?',
     options:['Parameswara','Raja Ali','Raja Muzaffar','Raja Melewar'],
     answer:0,
     explanation:'Parameswara mengasaskan Kesultanan Melayu Melaka sekitar tahun 1400.'
   },
   {
-    id:'t2-b5-02', chapter:'Bab 5', topic:'Kedudukan Strategik',
-    question:'Apakah kelebihan utama kedudukan Melaka yang membantu perkembangan kerajaan tersebut?',
-    options:['Terletak di Selat Melaka yang menjadi laluan perdagangan penting','Terletak jauh di kawasan pedalaman','Terletak di kawasan yang tidak dikunjungi pedagang asing','Terletak di kawasan gurun yang luas'],
+    id:'t2-b5-e2', chapter:'Bab 5', topic:'Pengakhiran Melaka', level:'rendah',
+    question:'Apakah peristiwa yang berlaku pada tahun 1511?',
+    options:[
+      'Portugis menawan Melaka',
+      'Belanda menawan Melaka',
+      'British menguasai Melaka',
+      'Siam menawan Melaka'
+    ],
+    answer:0,
+    explanation:'Portugis menawan Melaka pada tahun 1511.'
+  },
+  {
+    id:'t2-b5-m1', chapter:'Bab 5', topic:'Kedudukan Strategik', level:'sederhana',
+    question:'Mengapakah kedudukan Melaka di Selat Melaka membantu perkembangan kesultanan tersebut?',
+    options:[
+      'Melaka berada pada laluan perdagangan yang sering digunakan pedagang',
+      'Melaka jauh daripada laluan kapal dagang',
+      'Melaka tidak mempunyai hubungan dengan pelabuhan lain',
+      'Melaka hanya bergantung pada pertanian untuk memperoleh hasil'
+    ],
     answer:0,
     explanation:'Kedudukan di Selat Melaka menjadikan Melaka strategik bagi perdagangan dan pelayaran.'
   },
   {
-    id:'t2-b5-03', chapter:'Bab 5', topic:'Pentadbiran',
-    question:'Sistem Pembesar Empat Lipatan berkaitan dengan aspek apakah dalam Kesultanan Melayu Melaka?',
-    options:['Pentadbiran','Pertanian','Keagamaan','Perkapalan'],
-    answer:0,
-    explanation:'Sistem Pembesar Empat Lipatan menjadi asas penting pentadbiran Melaka.'
-  },
-  {
-    id:'t2-b5-04', chapter:'Bab 5', topic:'Perundangan',
+    id:'t2-b5-m2', chapter:'Bab 5', topic:'Perundangan', level:'sederhana',
     question:'Seorang nakhoda ingin mengetahui peraturan berkaitan pelayaran, tugas anak kapal dan keselamatan di laut. Apakah undang-undang yang patut dirujuk?',
     options:['Hukum Kanun Melaka','Undang-Undang Laut Melaka','Undang-Undang 99 Perak','Adat Perpatih'],
     answer:1,
-    explanation:'Undang-Undang Laut Melaka mengandungi peraturan yang berkaitan dengan pelayaran dan kehidupan di laut.'
+    explanation:'Undang-Undang Laut Melaka mengandungi peraturan berkaitan pelayaran dan kehidupan di laut.'
   },
   {
-    id:'t2-b5-05', chapter:'Bab 5', topic:'Pengakhiran Kesultanan Melaka',
-    question:'Apakah peristiwa yang berlaku pada tahun 1511?',
-    options:['Portugis menawan Melaka','Belanda menawan Melaka','British menguasai Melaka','Siam menawan Melaka'],
+    id:'t2-b5-h1', chapter:'Bab 5', topic:'Kegemilangan Melaka', level:'tinggi',
+    question:'Bagaimanakah Sistem Pembesar Empat Lipatan dan undang-undang bertulis membantu Kesultanan Melayu Melaka mencapai kegemilangan?',
+    options:[
+      'Mewujudkan pentadbiran teratur dan menjamin keselamatan urusan perdagangan',
+      'Memberikan semua kuasa pentadbiran kepada pedagang asing',
+      'Mengurangkan peranan pemerintah dalam mengurus kerajaan',
+      'Menghadkan kegiatan perdagangan kepada penduduk tempatan sahaja'
+    ],
     answer:0,
-    explanation:'Portugis menawan Melaka pada tahun 1511.'
+    explanation:'Pentadbiran yang tersusun dan undang-undang yang jelas membantu menjamin kestabilan serta keselamatan perdagangan.'
   },
 
-  // BAB 6 — Kesultanan Johor Riau
+  // ================= BAB 6 =================
   {
-    id:'t2-b6-01', chapter:'Bab 6', topic:'Pengasasan Johor Riau',
+    id:'t2-b6-e1', chapter:'Bab 6', topic:'Pengasasan Johor Riau', level:'rendah',
     question:'Siapakah pengasas Kesultanan Johor Riau pada tahun 1528?',
     options:['Raja Ali','Parameswara','Raja Muhammad','Raja Melewar'],
     answer:0,
     explanation:'Raja Ali mengasaskan Kesultanan Johor Riau pada tahun 1528.'
   },
   {
-    id:'t2-b6-02', chapter:'Bab 6', topic:'Pengasasan Johor Riau',
+    id:'t2-b6-e2', chapter:'Bab 6', topic:'Pengasasan Johor Riau', level:'rendah',
     question:'Apakah gelaran Raja Ali selepas menjadi pemerintah Johor Riau?',
     options:['Sultan Alauddin Riayat Shah I','Sultan Mansur Shah','Sultan Muzaffar Shah','Sultan Zainal Abidin I'],
     answer:0,
     explanation:'Raja Ali memakai gelaran Sultan Alauddin Riayat Shah I.'
   },
   {
-    id:'t2-b6-03', chapter:'Bab 6', topic:'Cabaran Johor Riau',
+    id:'t2-b6-m1', chapter:'Bab 6', topic:'Cabaran Johor Riau', level:'sederhana',
     question:'Antara berikut, yang manakah cabaran yang dihadapi oleh Kesultanan Johor Riau?',
-    context:['I Portugis','II Acheh','III Jambi','IV Rom'],
+    context:['I Portugis','II Acheh','III Jambi','IV Siam'],
     options:['I, II dan III','I, II dan IV','I, III dan IV','II, III dan IV'],
     answer:0,
     explanation:'Johor Riau menghadapi cabaran daripada Portugis, Acheh dan Jambi.'
   },
   {
-    id:'t2-b6-04', chapter:'Bab 6', topic:'Kegemilangan Perdagangan',
+    id:'t2-b6-m2', chapter:'Bab 6', topic:'Kegemilangan Perdagangan', level:'sederhana',
     question:'Mengapakah Johor Riau mampu berkembang sebagai pusat perdagangan unggul?',
-    options:['Kedudukan pelabuhan strategik dan pengurusan yang cekap','Pengharaman pedagang luar','Penutupan laluan laut','Pengurangan kegiatan persuratan'],
+    options:[
+      'Kedudukan strategik dan pengurusan pelabuhan yang cekap',
+      'Pengharaman pedagang luar daripada memasuki pelabuhan',
+      'Penutupan laluan laut kepada kapal asing',
+      'Pengurangan kegiatan perdagangan antarabangsa'
+    ],
     answer:0,
     explanation:'Kedudukan strategik dan pengurusan pelabuhan yang cekap menyokong kegemilangan perdagangan Johor Riau.'
   },
   {
-    id:'t2-b6-05', chapter:'Bab 6', topic:'Persuratan',
-    question:'Tokoh manakah yang dikaitkan dengan penyusunan Sulalatus Salatin?',
-    options:['Tun Sri Lanang','Tun Perak','Hang Tuah','Munshi Abdullah'],
+    id:'t2-b6-h1', chapter:'Bab 6', topic:'Strategi Menghadapi Cabaran', level:'tinggi',
+    question:'Bagaimanakah Kesultanan Johor Riau dapat terus bertahan walaupun berhadapan dengan ancaman Portugis, Acheh dan Jambi?',
+    options:[
+      'Menggunakan strategi pertahanan dan diplomasi mengikut keadaan',
+      'Menghentikan semua kegiatan perdagangan di pelabuhan',
+      'Menyerahkan pentadbiran kepada kuasa asing',
+      'Memutuskan hubungan dengan semua kerajaan serantau'
+    ],
     answer:0,
-    explanation:'Tun Sri Lanang dikaitkan dengan penyusunan Sulalatus Salatin.'
+    explanation:'Johor Riau menggunakan strategi pertahanan dan diplomasi bagi menghadapi cabaran yang berubah-ubah.'
   },
 
-  // BAB 7 — Kesultanan Pahang, Perak, Terengganu dan Selangor
+  // ================= BAB 7 =================
   {
-    id:'t2-b7-01', chapter:'Bab 7', topic:'Pengasasan Kesultanan',
+    id:'t2-b7-e1', chapter:'Bab 7', topic:'Pengasasan Kesultanan', level:'rendah',
     question:'Siapakah pengasas Kesultanan Pahang?',
     options:['Raja Muhammad','Raja Muzaffar','Raja Ali','Raja Melewar'],
     answer:0,
     explanation:'Kesultanan Pahang diasaskan oleh Raja Muhammad.'
   },
   {
-    id:'t2-b7-02', chapter:'Bab 7', topic:'Pengasasan Kesultanan',
+    id:'t2-b7-e2', chapter:'Bab 7', topic:'Pengasasan Kesultanan', level:'rendah',
     question:'Siapakah pengasas Kesultanan Perak?',
     options:['Raja Muzaffar','Raja Muhammad','Raja Ali','Raja Syed Hussin Jamalullail'],
     answer:0,
     explanation:'Kesultanan Perak diasaskan oleh Raja Muzaffar.'
   },
   {
-    id:'t2-b7-03', chapter:'Bab 7', topic:'Warisan Kesultanan Melayu Melaka',
-    question:'Apakah bentuk pemerintahan yang diwarisi oleh kesultanan Pahang, Perak, Terengganu dan Selangor daripada tradisi Kesultanan Melayu Melaka?',
-    options:['Pemerintahan beraja','Pemerintahan republik','Demokrasi langsung','Pemerintahan tentera'],
+    id:'t2-b7-m1', chapter:'Bab 7', topic:'Warisan Melaka', level:'sederhana',
+    question:'Apakah warisan Kesultanan Melayu Melaka yang diteruskan oleh Pahang, Perak, Terengganu dan Selangor?',
+    context:['I Pemerintahan beraja','II Agama Islam','III Adat istiadat','IV Demokrasi Athens'],
+    options:['I, II dan III','I, II dan IV','I, III dan IV','II, III dan IV'],
     answer:0,
-    explanation:'Kesultanan-kesultanan tersebut meneruskan tradisi pemerintahan beraja.'
+    explanation:'Kesultanan tersebut meneruskan pemerintahan beraja, agama Islam dan adat istiadat.'
   },
   {
-    id:'t2-b7-04', chapter:'Bab 7', topic:'Agama dan Adat',
-    question:'Apakah agama yang menjadi asas penting dalam perkembangan kesultanan Melayu?',
-    options:['Islam','Buddha','Hindu','Konfusianisme'],
+    id:'t2-b7-m2', chapter:'Bab 7', topic:'Perundangan dan Persuratan', level:'sederhana',
+    question:'Mengapakah perundangan dan persuratan penting dalam mengekalkan warisan kesultanan Melayu?',
+    options:[
+      'Menjadi panduan pentadbiran serta merekodkan adat dan sejarah kerajaan',
+      'Menggantikan sepenuhnya peranan pemerintah',
+      'Mengurangkan hubungan antara pemerintah dengan rakyat',
+      'Menghapuskan adat istiadat yang diwarisi'
+    ],
     answer:0,
-    explanation:'Islam menjadi asas penting dalam pemerintahan dan kehidupan kesultanan Melayu.'
+    explanation:'Perundangan dan persuratan membantu mengekalkan aturan pentadbiran, adat serta sejarah kerajaan.'
   },
   {
-    id:'t2-b7-05', chapter:'Bab 7', topic:'Warisan Kesultanan',
-    question:'Bagaimanakah warisan Kesultanan Melayu Melaka terus dikekalkan oleh kesultanan lain?',
-    options:['Melalui adat istiadat, perundangan dan persuratan','Dengan menghapuskan institusi beraja','Dengan memutuskan hubungan dengan negeri lain','Dengan menggantikan semua adat tempatan'],
+    id:'t2-b7-h1', chapter:'Bab 7', topic:'Kesinambungan Kesultanan', level:'tinggi',
+    question:'Bagaimanakah penerusan warisan Kesultanan Melayu Melaka membantu kestabilan kesultanan Melayu yang muncul kemudian?',
+    options:[
+      'Mengekalkan institusi, adat dan undang-undang yang sudah dikenali masyarakat',
+      'Menggantikan semua pembesar dengan pedagang asing',
+      'Menghapuskan hubungan kekeluargaan antara kerabat diraja',
+      'Mengurangkan peranan agama dalam kehidupan masyarakat'
+    ],
     answer:0,
-    explanation:'Warisan Melaka diteruskan melalui pemerintahan beraja, adat, perundangan dan persuratan.'
+    explanation:'Penerusan institusi, adat dan undang-undang mewujudkan kesinambungan serta kestabilan pemerintahan.'
   },
 
-  // BAB 8 — Kerajaan Kedah, Kelantan, Negeri Sembilan dan Perlis
+  // ================= BAB 8 =================
   {
-    id:'t2-b8-01', chapter:'Bab 8', topic:'Negeri Sembilan',
+    id:'t2-b8-e1', chapter:'Bab 8', topic:'Negeri Sembilan', level:'rendah',
     question:'Siapakah pemerintah yang diterima dari Pagar Ruyung untuk memerintah Negeri Sembilan?',
     options:['Raja Melewar','Raja Ali','Raja Muhammad','Raja Muzaffar'],
     answer:0,
     explanation:'Raja Melewar dari Pagar Ruyung diterima sebagai pemerintah Negeri Sembilan.'
   },
   {
-    id:'t2-b8-02', chapter:'Bab 8', topic:'Perlis',
+    id:'t2-b8-e2', chapter:'Bab 8', topic:'Perlis', level:'rendah',
     question:'Perlis pada asalnya merupakan sebahagian daripada negeri',
     options:['Kedah','Kelantan','Perak','Pahang'],
     answer:0,
     explanation:'Perlis pada asalnya merupakan sebahagian daripada Kedah.'
   },
   {
-    id:'t2-b8-03', chapter:'Bab 8', topic:'Perlis',
+    id:'t2-b8-m1', chapter:'Bab 8', topic:'Perlis', level:'sederhana',
     question:'Siapakah pemerintah Perlis yang menggunakan gelaran Raja?',
     options:['Raja Syed Hussin Jamalullail','Raja Melewar','Raja Muhammad','Raja Ali'],
     answer:0,
     explanation:'Raja Syed Hussin Jamalullail menjadi pemerintah Perlis dengan gelaran Raja.'
   },
   {
-    id:'t2-b8-04', chapter:'Bab 8', topic:'Hubungan Antara Kerajaan',
-    question:'Apakah cara yang digunakan untuk mengukuhkan hubungan antara kerajaan Melayu?',
-    options:['Perkahwinan diraja','Menutup pelabuhan','Memutuskan hubungan diplomatik','Melarang perdagangan antara negeri'],
+    id:'t2-b8-m2', chapter:'Bab 8', topic:'Hubungan Antara Kerajaan', level:'sederhana',
+    question:'Bagaimanakah hubungan antara kerajaan Melayu dapat diperkukuhkan?',
+    options:[
+      'Melalui diplomatik, perkahwinan diraja dan perdagangan',
+      'Dengan menghentikan hubungan antara kerabat diraja',
+      'Dengan menutup pelabuhan kepada pedagang negeri lain',
+      'Dengan memutuskan semua bantuan pertahanan'
+    ],
     answer:0,
-    explanation:'Perkahwinan diraja menjadi salah satu cara mengukuhkan hubungan antara kerajaan.'
+    explanation:'Hubungan diperkukuh melalui diplomatik, perkahwinan diraja, perdagangan dan bantuan pertahanan.'
   },
   {
-    id:'t2-b8-05', chapter:'Bab 8', topic:'Perdagangan',
-    question:'Apakah kesan hubungan perdagangan antara kerajaan Melayu?',
-    options:['Meningkatkan kemakmuran kerajaan','Mengurangkan hasil negeri','Melemahkan hubungan diplomatik','Menghapuskan kegiatan pelabuhan'],
+    id:'t2-b8-h1', chapter:'Bab 8', topic:'Hubungan Antara Kerajaan', level:'tinggi',
+    question:'Bagaimanakah hubungan diplomatik, perkahwinan diraja dan perdagangan menyumbang kepada kelangsungan kerajaan Melayu?',
+    options:[
+      'Mengukuhkan keselamatan, hubungan politik dan kemakmuran ekonomi',
+      'Mengurangkan kuasa pemerintah dalam semua urusan negeri',
+      'Menyebabkan setiap kerajaan bergantung sepenuhnya pada negeri lain',
+      'Menghapuskan identiti dan adat setiap kerajaan'
+    ],
     answer:0,
-    explanation:'Hubungan perdagangan menyumbang kepada kemakmuran dan hubungan antara kerajaan.'
+    explanation:'Hubungan antara kerajaan membantu keselamatan, kestabilan politik dan kemakmuran ekonomi.'
   },
 
-  // BAB 9 — Warisan Kerajaan Kedah, Kelantan, Negeri Sembilan dan Perlis
+  // ================= BAB 9 =================
   {
-    id:'t2-b9-01', chapter:'Bab 9', topic:'Warisan Kedah',
+    id:'t2-b9-e1', chapter:'Bab 9', topic:'Warisan Kedah', level:'rendah',
     question:'Apakah alat muzik diraja yang menjadi salah satu warisan Kesultanan Kedah?',
     options:['Nobat','Gamelan','Kompang','Rebana ubi'],
     answer:0,
     explanation:'Nobat ialah alat muzik diraja yang menjadi warisan Kesultanan Kedah.'
   },
   {
-    id:'t2-b9-02', chapter:'Bab 9', topic:'Adat Perpatih',
+    id:'t2-b9-e2', chapter:'Bab 9', topic:'Adat Perpatih', level:'rendah',
     question:'Adat Perpatih berasaskan keturunan sebelah',
     options:['ibu','bapa','raja','pembesar'],
     answer:0,
     explanation:'Adat Perpatih berasaskan sistem keturunan sebelah ibu.'
   },
   {
-    id:'t2-b9-03', chapter:'Bab 9', topic:'Pemerintahan Negeri Sembilan',
+    id:'t2-b9-m1', chapter:'Bab 9', topic:'Pemerintahan Negeri Sembilan', level:'sederhana',
     question:'Siapakah yang memilih Yang di-Pertuan Besar Negeri Sembilan?',
     options:['Undang Yang Empat','Pembesar Empat Lipatan','Syahbandar','Penghulu mukim'],
     answer:0,
     explanation:'Yang di-Pertuan Besar dipilih oleh Undang Yang Empat.'
   },
   {
-    id:'t2-b9-04', chapter:'Bab 9', topic:'Adat Perpatih',
-    question:'Apakah unit kekeluargaan yang penting dalam susunan masyarakat Adat Perpatih?',
-    options:['Suku','Daerah','Mukim','Kabilah'],
+    id:'t2-b9-m2', chapter:'Bab 9', topic:'Permuafakatan', level:'sederhana',
+    question:'Mengapakah permuafakatan penting dalam Adat Perpatih?',
+    options:[
+      'Keputusan dibuat melalui perbincangan dan persetujuan bersama',
+      'Semua keputusan ditentukan oleh seorang pemimpin sahaja',
+      'Jawatan pemerintah diwarisi tanpa sebarang proses pemilihan',
+      'Masyarakat tidak mempunyai peranan dalam urusan kepimpinan'
+    ],
     answer:0,
-    explanation:'Suku merupakan unit penting dalam organisasi masyarakat Adat Perpatih.'
+    explanation:'Permuafakatan menekankan perbincangan dan persetujuan bersama dalam membuat keputusan.'
   },
   {
-    id:'t2-b9-05', chapter:'Bab 9', topic:'Permuafakatan',
-    question:'Apakah prinsip yang menjadi asas penting dalam proses membuat keputusan dalam Adat Perpatih?',
-    options:['Permuafakatan','Paksaan','Pewarisan mutlak','Perintah tentera'],
+    id:'t2-b9-h1', chapter:'Bab 9', topic:'Keunikan Pemerintahan Negeri Sembilan', level:'tinggi',
+    question:'Bagaimanakah amalan pemilihan Yang di-Pertuan Besar mencerminkan prinsip permuafakatan dalam Adat Perpatih?',
+    options:[
+      'Pemimpin dipilih melalui peranan Undang Yang Empat, bukan melalui pewarisan mutlak',
+      'Pemimpin dilantik terus oleh pedagang yang paling berpengaruh',
+      'Pemimpin dipilih berdasarkan kekayaan keluarga semata-mata',
+      'Pemimpin ditentukan oleh kuasa luar tanpa penglibatan pemimpin tempatan'
+    ],
     answer:0,
-    explanation:'Permuafakatan menjadi asas penting dalam proses membuat keputusan.'
+    explanation:'Pemilihan melalui Undang Yang Empat menunjukkan unsur perundingan dan permuafakatan dalam sistem pemerintahan Negeri Sembilan.'
   },
 
-  // BAB 10 — Sarawak dan Sabah
+  // ================= BAB 10 =================
   {
-    id:'t2-b10-01', chapter:'Bab 10', topic:'Sarawak dalam Alam Melayu',
+    id:'t2-b10-e1', chapter:'Bab 10', topic:'Sarawak dalam Alam Melayu', level:'rendah',
     question:'Sarawak mempunyai hubungan sejarah dengan kesultanan',
     options:['Brunei','Perak','Pahang','Selangor'],
     answer:0,
     explanation:'Sarawak mempunyai hubungan dengan Kesultanan Brunei.'
   },
   {
-    id:'t2-b10-02', chapter:'Bab 10', topic:'Sabah dalam Alam Melayu',
+    id:'t2-b10-e2', chapter:'Bab 10', topic:'Sabah dalam Alam Melayu', level:'rendah',
     question:'Sabah mempunyai hubungan dengan kesultanan',
     options:['Sulu dan Brunei','Johor Riau dan Perak','Pahang dan Selangor','Kedah dan Kelantan'],
     answer:0,
     explanation:'Sabah mempunyai hubungan dengan Kesultanan Sulu dan Brunei.'
   },
   {
-    id:'t2-b10-03', chapter:'Bab 10', topic:'Pemerintahan Tempatan',
+    id:'t2-b10-m1', chapter:'Bab 10', topic:'Pemerintahan Tempatan', level:'sederhana',
     question:'Siapakah pemimpin utama sesebuah rumah panjang di Sarawak?',
     options:['Tuai Rumah','Datu','Syahbandar','Bendahara'],
     answer:0,
     explanation:'Tuai Rumah menjadi pemimpin utama sesebuah rumah panjang.'
   },
   {
-    id:'t2-b10-04', chapter:'Bab 10', topic:'Kegiatan Ekonomi',
-    question:'Bentuk muka bumi pedalaman Sarawak dan Sabah kaya dengan sumber semula jadi. Kegiatan ekonomi manakah yang berkaitan secara langsung dengan keadaan tersebut?',
-    options:['Mengutip hasil hutan','Perdagangan entrepot','Penanaman gandum secara besar-besaran','Pembuatan barangan logam import'],
+    id:'t2-b10-m2', chapter:'Bab 10', topic:'Kegiatan Ekonomi', level:'sederhana',
+    question:'Bagaimanakah kedudukan petempatan berhampiran sungai dan pesisir membantu kegiatan ekonomi masyarakat Sarawak dan Sabah?',
+    options:[
+      'Memudahkan perhubungan, menangkap hasil laut dan menjalankan perdagangan',
+      'Menghalang pergerakan penduduk ke kawasan lain',
+      'Mengurangkan kegiatan pertukaran barang antara masyarakat',
+      'Menyebabkan kegiatan ekonomi hanya tertumpu pada pemburuan'
+    ],
     answer:0,
-    explanation:'Masyarakat pedalaman menjalankan kegiatan seperti mengutip hasil hutan.'
+    explanation:'Sungai dan pesisir menjadi laluan perhubungan serta menyokong kegiatan perdagangan dan mendapatkan sumber.'
   },
   {
-    id:'t2-b10-05', chapter:'Bab 10', topic:'Keunikan Masyarakat Bumiputera',
-    question:'Maklumat berikut menunjukkan keunikan masyarakat bumiputera Sarawak dan Sabah.',
-    context:['I Adat','II Tarian','III Kraftangan','IV Sistem tulisan Latin'],
-    options:['I, II dan III','I, II dan IV','I, III dan IV','II, III dan IV'],
+    id:'t2-b10-h1', chapter:'Bab 10', topic:'Pemerintahan dan Ekonomi Tempatan', level:'tinggi',
+    question:'Bagaimanakah bentuk muka bumi Sarawak dan Sabah mempengaruhi corak pemerintahan dan kegiatan ekonomi masyarakat tempatan?',
+    options:[
+      'Kawasan yang berbeza melahirkan kepimpinan setempat serta kegiatan ekonomi mengikut sumber yang tersedia',
+      'Semua kawasan menggunakan satu bentuk kepimpinan dan kegiatan ekonomi yang sama',
+      'Masyarakat pesisir tidak mempunyai hubungan dengan masyarakat pedalaman',
+      'Bentuk muka bumi menyebabkan semua kegiatan perdagangan dihentikan'
+    ],
     answer:0,
-    explanation:'Keunikan masyarakat bumiputera dapat dilihat melalui adat, tarian, muzik, rumah tradisional dan kraftangan.'
+    explanation:'Keadaan geografi yang pelbagai membentuk kepimpinan setempat dan kegiatan ekonomi yang berbeza mengikut kawasan serta sumber.'
   }
 ];
 
-// Imbangi kedudukan jawapan betul A–D walaupun tetapan rawak pilihan dimatikan.
+// Seimbangkan kedudukan jawapan betul A–D jika fungsi rawak pilihan jawapan dimatikan.
 window.QUESTION_BANK_T2 = window.QUESTION_BANK_T2.map((q, index) => {
   const shift = index % 4;
   const options = q.options.slice(shift).concat(q.options.slice(0, shift));
