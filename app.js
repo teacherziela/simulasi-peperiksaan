@@ -2,18 +2,18 @@
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => [...document.querySelectorAll(s)];
   const LETTERS = ['A', 'B', 'C', 'D'];
-  const STORAGE_KEY = 'historyverse_uasa_t1_attempts_v1';
-  const FEEDBACK_KEY = 'historyverse_uasa_t1_feedback_v1';
+  const STORAGE_KEY = 'historyverse_uasa_attempts_v2';
+  const FEEDBACK_KEY = 'historyverse_uasa_feedback_v2';
 
   const state = {
-    mode: 'full',
+    mode: 'A',
     formLevel: '1',
     questions: [],
     current: 0,
     answers: {},
     reviews: {},
     startedAt: null,
-    secondsLeft: 50 * 60,
+    secondsLeft: 25 * 60,
     timerId: null,
     student: { name: '', className: '' },
     result: null,
@@ -48,7 +48,7 @@
   }
 
   function currentMode() {
-    return document.querySelector('input[name="mode"]:checked')?.value || 'full';
+    return document.querySelector('input[name="mode"]:checked')?.value || 'A';
   }
 
   function currentFormLevel() {
@@ -67,18 +67,30 @@
   function updateLevelUI() {
     const level = currentFormLevel();
     if (els.ticketForm) els.ticketForm.textContent = level;
-    if (els.levelLead) els.levelLead.innerHTML = `Set lengkap mengandungi <strong>50 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan ${level}. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.`;
+    if (els.levelLead) els.levelLead.innerHTML = `Set mengandungi <strong>20 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan ${level}. Susunan soalan dirawakkan, pilihan jawapan munasabah dan markah disemak secara automatik.`;
     if (els.studentClass) els.studentClass.placeholder = `Contoh: ${level} Adil`;
   }
 
   function buildQuestions() {
     const bank = state.formLevel === '2' ? (window.QUESTION_BANK_T2 || []) : (window.QUESTION_BANK || []);
-    let picked;
-    if (state.mode === 'focus') {
-      picked = bank.filter(q => q.practiceSet === true); // 30 soalan fokus
+    let picked = [];
+    const setOffset = { A: 0, B: 1, C: 2, D: 3 }[state.mode] ?? 0;
+
+    if (state.formLevel === '2') {
+      // Tingkatan 2: tepat 2 soalan bagi setiap Bab 1–10 = 20 soalan.
+      const chapters = Array.from(new Set(bank.map(q => q.chapter)));
+      chapters.forEach(chapter => {
+        const chapterItems = bank.filter(q => q.chapter === chapter);
+        picked.push(...chapterItems.slice(setOffset, setOffset + 2));
+      });
     } else {
-      picked = [...bank]; // semua 50 soalan
+      // Tingkatan 1: empat set 20 soalan daripada bank sedia ada.
+      const starts = { A: 0, B: 10, C: 20, D: 30 };
+      const start = starts[state.mode] ?? 0;
+      picked = bank.slice(start, start + 20);
+      if (picked.length < 20) picked = [...picked, ...bank.slice(0, 20 - picked.length)];
     }
+
     if (els.shuffleQuestions.checked) picked = shuffle(picked);
     return picked.map(q => ({...q, options: [...q.options]}));
   }
@@ -107,7 +119,7 @@
     state.answers = {};
     state.reviews = {};
     state.startedAt = new Date();
-    state.secondsLeft = state.mode === 'full' ? 50 * 60 : 30 * 60;
+    state.secondsLeft = 25 * 60;
     state.result = null;
     buildOptionMaps();
     els.startScreen.classList.add('hidden');
@@ -237,7 +249,7 @@
     const total = state.questions.length;
     const percentage = Math.round((score / total) * 100);
     const finishedAt = new Date();
-    const secondsUsed = Math.max(0, ((state.mode === 'full' ? 50 : 30) * 60) - state.secondsLeft);
+    const secondsUsed = Math.max(0, (25 * 60) - state.secondsLeft);
     state.result = { score, total, percentage, chapterStats, topicStats, finishedAt, secondsUsed, auto };
     saveAttempt();
     showResults();
@@ -363,7 +375,7 @@
     } else {
       els.historyList.innerHTML = attempts.map(a => {
         const d = new Date(a.date);
-        return `<div class="history-row"><div><b>${escapeHTML(a.name)} · ${escapeHTML(a.className)}</b><small>${d.toLocaleString('ms-MY')} · Tingkatan ${a.formLevel || '1'} · ${a.mode === 'full' ? 'Simulasi penuh' : 'Fokus topik'}</small></div><div class="history-score">${a.score}/${a.total}<br><small>${a.percentage}%</small></div></div>`;
+        return `<div class="history-row"><div><b>${escapeHTML(a.name)} · ${escapeHTML(a.className)}</b><small>${d.toLocaleString('ms-MY')} · Tingkatan ${a.formLevel || '1'} · Set ${a.mode || 'A'}</small></div><div class="history-score">${a.score}/${a.total}<br><small>${a.percentage}%</small></div></div>`;
       }).join('');
     }
     els.historyDialog.showModal();
