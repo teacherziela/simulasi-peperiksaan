@@ -52,12 +52,20 @@
   }
 
   function currentFormLevel() {
-    return document.querySelector('input[name="formLevel"]:checked')?.value || '1';
+    return document.querySelector('.level-card.selected')?.dataset.level || '1';
+  }
+
+  function setFormLevel(level) {
+    $('.level-card').forEach(card => {
+      const active = card.dataset.level === String(level);
+      card.classList.toggle('selected', active);
+      card.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    updateLevelUI();
   }
 
   function updateLevelUI() {
     const level = currentFormLevel();
-    $('.level-card').forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
     if (els.ticketForm) els.ticketForm.textContent = level;
     if (els.levelLead) els.levelLead.innerHTML = `Set lengkap mengandungi <strong>50 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan ${level}. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.`;
     if (els.studentClass) els.studentClass.placeholder = `Contoh: ${level} Adil`;
@@ -373,8 +381,8 @@
   $('.mode-card input[name="mode"]').forEach(input => input.addEventListener('change', () => {
     $('.mode-card').filter(card => card.querySelector('input[name="mode"]')).forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
   }));
-  $('input[name="formLevel"]').forEach(input => input.addEventListener('change', updateLevelUI));
-  updateLevelUI();
+  $('.level-card').forEach(card => card.addEventListener('click', () => setFormLevel(card.dataset.level)));
+  setFormLevel('1');
   els.startBtn.addEventListener('click', startExam);
   els.prevBtn.addEventListener('click', () => { if (state.current > 0) { state.current--; renderQuestion(); } });
   els.nextBtn.addEventListener('click', () => {
