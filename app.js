@@ -56,7 +56,7 @@
   }
 
   function setFormLevel(level) {
-    $('.level-card').forEach(card => {
+    Array.from(document.querySelectorAll('.level-card')).forEach(card => {
       const active = card.dataset.level === String(level);
       card.classList.toggle('selected', active);
       card.setAttribute('aria-pressed', active ? 'true' : 'false');
@@ -378,10 +378,10 @@
   }
 
   // UI bindings
-  $('.mode-card input[name="mode"]').forEach(input => input.addEventListener('change', () => {
-    $('.mode-card').filter(card => card.querySelector('input[name="mode"]')).forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
+  Array.from(document.querySelectorAll('.mode-card input[name="mode"]')).forEach(input => input.addEventListener('change', () => {
+    Array.from(document.querySelectorAll('.mode-card')).filter(card => card.querySelector('input[name="mode"]')).forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
   }));
-  $('.level-card').forEach(card => card.addEventListener('click', () => setFormLevel(card.dataset.level)));
+  Array.from(document.querySelectorAll('.level-card')).forEach(card => card.addEventListener('click', () => setFormLevel(card.dataset.level)));
   setFormLevel('1');
   els.startBtn.addEventListener('click', startExam);
   els.prevBtn.addEventListener('click', () => { if (state.current > 0) { state.current--; renderQuestion(); } });
