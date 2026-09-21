@@ -74,14 +74,17 @@
   function buildQuestions() {
     const bank = state.formLevel === '2' ? (window.QUESTION_BANK_T2 || []) : (window.QUESTION_BANK || []);
     let picked = [];
-    const setOffset = { A: 0, B: 1, C: 2, D: 3 }[state.mode] ?? 0;
-
     if (state.formLevel === '2') {
       // Tingkatan 2: tepat 2 soalan bagi setiap Bab 1–10 = 20 soalan.
+      // Set dicampur antara item fakta, stimulus, sebab-akibat dan aplikasi.
+      const patterns = { A: [0, 3], B: [1, 4], C: [2, 0], D: [2, 4] };
+      const chosen = patterns[state.mode] || patterns.A;
       const chapters = Array.from(new Set(bank.map(q => q.chapter)));
       chapters.forEach(chapter => {
         const chapterItems = bank.filter(q => q.chapter === chapter);
-        picked.push(...chapterItems.slice(setOffset, setOffset + 2));
+        chosen.forEach(index => {
+          if (chapterItems[index]) picked.push(chapterItems[index]);
+        });
       });
     } else {
       // Tingkatan 1: empat set 20 soalan daripada bank sedia ada.
