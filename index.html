@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HistoryVerse — Simulasi UASA Sejarah Tingkatan 1 & 2</title>
   <meta name="theme-color" content="#5d35b1" />
-  <link rel="stylesheet" href="styles.css?v=20260921-2235" />
+  <link rel="stylesheet" href="styles.css?v=20260921-2248" />
 </head>
 <body>
   <div class="bg-orb orb-one"></div>
@@ -43,16 +43,16 @@
       </div>
 
       <div class="mode-grid level-grid" aria-label="Pilih tingkatan">
-        <label class="mode-card level-card selected">
-          <input type="radio" name="formLevel" value="1" checked />
+        <button type="button" class="mode-card level-card selected" data-level="1" aria-pressed="true">
+          <span class="level-dot" aria-hidden="true"></span>
           <span class="mode-icon">1️⃣</span>
           <span><b>Tingkatan 1</b><small>Bab 1 hingga Bab 8</small></span>
-        </label>
-        <label class="mode-card level-card">
-          <input type="radio" name="formLevel" value="2" />
+        </button>
+        <button type="button" class="mode-card level-card" data-level="2" aria-pressed="false">
+          <span class="level-dot" aria-hidden="true"></span>
           <span class="mode-icon">2️⃣</span>
           <span><b>Tingkatan 2</b><small>Bab 1 hingga Bab 10</small></span>
-        </label>
+        </button>
       </div>
 
       <div class="form-grid">
@@ -194,8 +194,8 @@
     </dialog>
   </main>
 
-  <script src="questions.js?v=20260921-2235"></script>
-  <script src="questions-t2.js?v=20260921-2235"></script>
-  <script src="app.js?v=20260921-2235"></script>
+  <script src="questions.js?v=20260921-2248"></script>
+  <script src="questions-t2.js?v=20260921-2248"></script>
+  <script src="app.js?v=20260921-2248"></script>
 </body>
 </html>
