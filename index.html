@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HistoryVerse — Simulasi UASA Sejarah Tingkatan 1</title>
+  <title>HistoryVerse — Simulasi UASA Sejarah Tingkatan 1 & 2</title>
   <meta name="theme-color" content="#5d35b1" />
-  <link rel="stylesheet" href="styles.css?v=20260921-2220" />
+  <link rel="stylesheet" href="styles.css?v=20260921-2235" />
 </head>
 <body>
   <div class="bg-orb orb-one"></div>
@@ -14,7 +14,7 @@
   <main class="shell">
     <header class="topbar">
       <div>
-        <div class="eyebrow">HISTORYVERSE · SEJARAH TINGKATAN 1</div>
+        <div class="eyebrow">HISTORYVERSE · SEJARAH TINGKATAN 1 & 2</div>
         <h1>Simulasi Peperiksaan UASA</h1>
       </div>
       <button id="historyBtn" class="ghost-btn" type="button">📊 Rekod Saya</button>
@@ -25,21 +25,34 @@
         <div>
           <span class="pill">Objektif · A–D · Semak automatik</span>
           <h2>Masuk dewan peperiksaan maya ✨</h2>
-          <p class="lead">Set lengkap mengandungi <strong>50 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan 1. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.</p>
+          <p id="levelLead" class="lead">Set lengkap mengandungi <strong>50 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan 1. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.</p>
 
           <div class="feature-row">
             <div class="mini-card"><b>50</b><span>Soalan penuh</span></div>
-            <div class="mini-card"><b>15</b><span>Topik fokus</span></div>
+            <div class="mini-card"><b>30</b><span>Soalan fokus</span></div>
             <div class="mini-card"><b>Auto</b><span>Semak markah</span></div>
           </div>
         </div>
         <div class="exam-ticket">
           <div class="ticket-stamp">UASA</div>
           <div class="ticket-line"><span>Subjek</span><b>Sejarah</b></div>
-          <div class="ticket-line"><span>Tingkatan</span><b>1</b></div>
+          <div class="ticket-line"><span>Tingkatan</span><b id="ticketForm">1</b></div>
           <div class="ticket-line"><span>Bahagian</span><b>Objektif</b></div>
           <div class="ticket-line"><span>Masa cadangan</span><b>50 minit</b></div>
         </div>
+      </div>
+
+      <div class="mode-grid level-grid" aria-label="Pilih tingkatan">
+        <label class="mode-card level-card selected">
+          <input type="radio" name="formLevel" value="1" checked />
+          <span class="mode-icon">1️⃣</span>
+          <span><b>Tingkatan 1</b><small>Bab 1 hingga Bab 8</small></span>
+        </label>
+        <label class="mode-card level-card">
+          <input type="radio" name="formLevel" value="2" />
+          <span class="mode-icon">2️⃣</span>
+          <span><b>Tingkatan 2</b><small>Bab 1 hingga Bab 10</small></span>
+        </label>
       </div>
 
       <div class="form-grid">
@@ -60,7 +73,7 @@
         <label class="mode-card">
           <input type="radio" name="mode" value="focus" />
           <span class="mode-icon">🎯</span>
-          <span><b>Fokus Topik</b><small>30 soalan · 2 soalan bagi setiap 15 topik</small></span>
+          <span><b>Fokus Topik</b><small>30 soalan terpilih · merentas semua bab</small></span>
         </label>
       </div>
 
@@ -181,7 +194,8 @@
     </dialog>
   </main>
 
-  <script src="questions.js?v=20260921-2220"></script>
-  <script src="app.js?v=20260921-2220"></script>
+  <script src="questions.js?v=20260921-2235"></script>
+  <script src="questions-t2.js?v=20260921-2235"></script>
+  <script src="app.js?v=20260921-2235"></script>
 </body>
 </html>
