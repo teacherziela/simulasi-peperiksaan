@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HistoryVerse — Simulasi UASA Sejarah Tingkatan 1 & 2</title>
   <meta name="theme-color" content="#5d35b1" />
-  <link rel="stylesheet" href="styles.css?v=20260921-2248" />
+  <link rel="stylesheet" href="styles.css?v=20260922-0635" />
 </head>
 <body>
   <div class="bg-orb orb-one"></div>
@@ -25,11 +25,11 @@
         <div>
           <span class="pill">Objektif · A–D · Semak automatik</span>
           <h2>Masuk dewan peperiksaan maya ✨</h2>
-          <p id="levelLead" class="lead">Set lengkap mengandungi <strong>50 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan 1. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.</p>
+          <p id="levelLead" class="lead">Set mengandungi <strong>20 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan 1. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.</p>
 
           <div class="feature-row">
-            <div class="mini-card"><b>50</b><span>Soalan penuh</span></div>
-            <div class="mini-card"><b>30</b><span>Soalan fokus</span></div>
+            <div class="mini-card"><b>20</b><span>Soalan setiap set</span></div>
+            <div class="mini-card"><b>4</b><span>Set latihan</span></div>
             <div class="mini-card"><b>Auto</b><span>Semak markah</span></div>
           </div>
         </div>
@@ -38,7 +38,7 @@
           <div class="ticket-line"><span>Subjek</span><b>Sejarah</b></div>
           <div class="ticket-line"><span>Tingkatan</span><b id="ticketForm">1</b></div>
           <div class="ticket-line"><span>Bahagian</span><b>Objektif</b></div>
-          <div class="ticket-line"><span>Masa cadangan</span><b>50 minit</b></div>
+          <div class="ticket-line"><span>Masa cadangan</span><b>25 minit</b></div>
         </div>
       </div>
 
@@ -64,16 +64,26 @@
         </label>
       </div>
 
-      <div class="mode-grid">
+      <div class="mode-grid set-grid" aria-label="Pilih set soalan">
         <label class="mode-card selected">
-          <input type="radio" name="mode" value="full" checked />
-          <span class="mode-icon">📝</span>
-          <span><b>Simulasi Penuh</b><small>50 soalan · pelbagai topik</small></span>
+          <input type="radio" name="mode" value="A" checked />
+          <span class="mode-icon">🅰️</span>
+          <span><b>Set A</b><small>20 soalan · format peperiksaan</small></span>
         </label>
         <label class="mode-card">
-          <input type="radio" name="mode" value="focus" />
-          <span class="mode-icon">🎯</span>
-          <span><b>Fokus Topik</b><small>30 soalan terpilih · merentas semua bab</small></span>
+          <input type="radio" name="mode" value="B" />
+          <span class="mode-icon">🅱️</span>
+          <span><b>Set B</b><small>20 soalan · format peperiksaan</small></span>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="mode" value="C" />
+          <span class="mode-icon">🅲</span>
+          <span><b>Set C</b><small>20 soalan · format peperiksaan</small></span>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="mode" value="D" />
+          <span class="mode-icon">🅳</span>
+          <span><b>Set D</b><small>20 soalan · format peperiksaan</small></span>
         </label>
       </div>
 
@@ -94,9 +104,9 @@
               <div class="eyebrow">CALON</div>
               <strong id="candidateLabel">—</strong>
             </div>
-            <div id="timer" class="timer">50:00</div>
+            <div id="timer" class="timer">25:00</div>
           </div>
-          <div class="progress-copy"><span id="answeredCount">0</span>/<span id="totalCount">50</span> dijawab</div>
+          <div class="progress-copy"><span id="answeredCount">0</span>/<span id="totalCount">20</span> dijawab</div>
           <div class="progress-track"><div id="progressBar"></div></div>
           <div id="questionPalette" class="palette" aria-label="Navigasi soalan"></div>
           <button id="submitBtn" class="primary-btn wide" type="button">Hantar Jawapan</button>
@@ -124,7 +134,7 @@
     <section id="resultScreen" class="hidden">
       <div class="panel result-hero">
         <div class="score-ring" id="scoreRing">
-          <div><strong id="scoreValue">0/50</strong><span id="percentageValue">0%</span></div>
+          <div><strong id="scoreValue">0/20</strong><span id="percentageValue">0%</span></div>
         </div>
         <div class="result-copy">
           <div class="eyebrow">KEPUTUSAN SIMULASI</div>
@@ -194,8 +204,8 @@
     </dialog>
   </main>
 
-  <script src="questions.js?v=20260921-2248"></script>
-  <script src="questions-t2.js?v=20260921-2248"></script>
-  <script src="app.js?v=20260921-2255"></script>
+  <script src="questions.js?v=20260922-0635"></script>
+  <script src="questions-t2.js?v=20260922-0635"></script>
+  <script src="app.js?v=20260922-0635"></script>
 </body>
 </html>
