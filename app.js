@@ -7,6 +7,7 @@
 
   const state = {
     mode: 'full',
+    formLevel: '1',
     questions: [],
     current: 0,
     answers: {},
@@ -21,7 +22,7 @@
 
   const els = {
     startScreen: $('#startScreen'), examScreen: $('#examScreen'), resultScreen: $('#resultScreen'),
-    studentName: $('#studentName'), studentClass: $('#studentClass'), startBtn: $('#startBtn'), startError: $('#startError'),
+    studentName: $('#studentName'), studentClass: $('#studentClass'), startBtn: $('#startBtn'), startError: $('#startError'), levelLead: $('#levelLead'), ticketForm: $('#ticketForm'),
     shuffleQuestions: $('#shuffleQuestions'), shuffleOptions: $('#shuffleOptions'),
     candidateLabel: $('#candidateLabel'), timer: $('#timer'), answeredCount: $('#answeredCount'), totalCount: $('#totalCount'), progressBar: $('#progressBar'), questionPalette: $('#questionPalette'),
     questionNumber: $('#questionNumber'), topicBadge: $('#topicBadge'), questionText: $('#questionText'), questionContext: $('#questionContext'), optionsList: $('#optionsList'),
@@ -50,11 +51,23 @@
     return document.querySelector('input[name="mode"]:checked')?.value || 'full';
   }
 
+  function currentFormLevel() {
+    return document.querySelector('input[name="formLevel"]:checked')?.value || '1';
+  }
+
+  function updateLevelUI() {
+    const level = currentFormLevel();
+    $('.level-card').forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
+    if (els.ticketForm) els.ticketForm.textContent = level;
+    if (els.levelLead) els.levelLead.innerHTML = `Set lengkap mengandungi <strong>50 soalan objektif</strong> daripada pelbagai topik Sejarah Tingkatan ${level}. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.`;
+    if (els.studentClass) els.studentClass.placeholder = `Contoh: ${level} Adil`;
+  }
+
   function buildQuestions() {
-    const bank = window.QUESTION_BANK || [];
+    const bank = state.formLevel === '2' ? (window.QUESTION_BANK_T2 || []) : (window.QUESTION_BANK || []);
     let picked;
     if (state.mode === 'focus') {
-      picked = bank.filter(q => q.practiceSet === true); // 30 soalan = 15 topik x 2
+      picked = bank.filter(q => q.practiceSet === true); // 30 soalan fokus
     } else {
       picked = [...bank]; // semua 50 soalan
     }
@@ -79,6 +92,7 @@
     }
     els.startError.textContent = '';
     state.mode = currentMode();
+    state.formLevel = currentFormLevel();
     state.student = { name, className };
     state.questions = buildQuestions();
     state.current = 0;
@@ -91,7 +105,7 @@
     els.startScreen.classList.add('hidden');
     els.resultScreen.classList.add('hidden');
     els.examScreen.classList.remove('hidden');
-    els.candidateLabel.textContent = `${name} · ${className}`;
+    els.candidateLabel.textContent = `${name} · ${className} · Tingkatan ${state.formLevel}`;
     els.totalCount.textContent = state.questions.length;
     renderPalette();
     renderQuestion();
@@ -240,7 +254,7 @@
     els.resultTitle.textContent = title;
     const mins = Math.floor(r.secondsUsed / 60);
     const secs = r.secondsUsed % 60;
-    els.resultSummary.textContent = `${state.student.name} (${state.student.className}) memperoleh ${r.score} daripada ${r.total} markah dalam ${mins} minit ${secs} saat. ${message}`;
+    els.resultSummary.textContent = `${state.student.name} (${state.student.className}, Tingkatan ${state.formLevel}) memperoleh ${r.score} daripada ${r.total} markah dalam ${mins} minit ${secs} saat. ${message}`;
     renderBreakdown();
     renderReview('all');
     populateHardTopics();
@@ -292,6 +306,7 @@
       name: state.student.name,
       className: state.student.className,
       mode: state.mode,
+      formLevel: state.formLevel,
       score: state.result.score,
       total: state.result.total,
       percentage: state.result.percentage,
@@ -307,6 +322,7 @@
     const item = {
       name: state.student.name,
       className: state.student.className,
+      formLevel: state.formLevel,
       score: state.result.score,
       total: state.result.total,
       percentage: state.result.percentage,
@@ -339,7 +355,7 @@
     } else {
       els.historyList.innerHTML = attempts.map(a => {
         const d = new Date(a.date);
-        return `<div class="history-row"><div><b>${escapeHTML(a.name)} · ${escapeHTML(a.className)}</b><small>${d.toLocaleString('ms-MY')} · ${a.mode === 'full' ? 'Simulasi penuh' : 'Fokus topik'}</small></div><div class="history-score">${a.score}/${a.total}<br><small>${a.percentage}%</small></div></div>`;
+        return `<div class="history-row"><div><b>${escapeHTML(a.name)} · ${escapeHTML(a.className)}</b><small>${d.toLocaleString('ms-MY')} · Tingkatan ${a.formLevel || '1'} · ${a.mode === 'full' ? 'Simulasi penuh' : 'Fokus topik'}</small></div><div class="history-score">${a.score}/${a.total}<br><small>${a.percentage}%</small></div></div>`;
       }).join('');
     }
     els.historyDialog.showModal();
@@ -354,9 +370,11 @@
   }
 
   // UI bindings
-  $$('.mode-card input').forEach(input => input.addEventListener('change', () => {
-    $$('.mode-card').forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
+  $('.mode-card input[name="mode"]').forEach(input => input.addEventListener('change', () => {
+    $('.mode-card').filter(card => card.querySelector('input[name="mode"]')).forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
   }));
+  $('input[name="formLevel"]').forEach(input => input.addEventListener('change', updateLevelUI));
+  updateLevelUI();
   els.startBtn.addEventListener('click', startExam);
   els.prevBtn.addEventListener('click', () => { if (state.current > 0) { state.current--; renderQuestion(); } });
   els.nextBtn.addEventListener('click', () => {
