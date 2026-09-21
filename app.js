@@ -136,36 +136,50 @@
   function renderQuestion() {
     const q = state.questions[state.current];
     if (!q) return;
-    els.questionNumber.textContent = `Soalan ${state.current + 1} / ${state.questions.length}`;
-    els.topicBadge.textContent = `${q.chapter} · ${q.topic}`;
-    els.questionText.textContent = q.question;
-    els.markReview.checked = !!state.reviews[q.id];
 
-    if (q.context?.length) {
-      els.questionContext.innerHTML = q.context.map(item => `<div>${escapeHTML(item)}</div>`).join('');
-      els.questionContext.classList.remove('hidden');
-    } else {
-      els.questionContext.classList.add('hidden');
-      els.questionContext.innerHTML = '';
+    // Fallback selector supaya paparan soalan tetap berfungsi walaupun browser
+    // masih menyimpan HTML lama dalam cache GitHub Pages.
+    const questionNumberEl = els.questionNumber || document.getElementById('questionNumber') || document.querySelector('.question-meta .pill');
+    const topicBadgeEl = els.topicBadge || document.getElementById('topicBadge') || document.querySelector('.question-meta .subtle-pill');
+    const questionTextEl = els.questionText || document.getElementById('questionText') || document.querySelector('.question-panel h2');
+    const questionContextEl = els.questionContext || document.getElementById('questionContext') || document.querySelector('.question-panel .context-box');
+    const optionsListEl = els.optionsList || document.getElementById('optionsList') || document.querySelector('.question-panel .options-list');
+    const markReviewEl = els.markReview || document.getElementById('markReview') || document.querySelector('.question-panel input[type="checkbox"]');
+
+    if (questionNumberEl) questionNumberEl.textContent = `Soalan ${state.current + 1} / ${state.questions.length}`;
+    if (topicBadgeEl) topicBadgeEl.textContent = `${q.chapter} · ${q.topic}`;
+    if (questionTextEl) questionTextEl.textContent = q.question ?? q.text ?? q.prompt ?? 'Soalan tidak dapat dimuatkan.';
+    if (markReviewEl) markReviewEl.checked = !!state.reviews[q.id];
+
+    if (questionContextEl) {
+      if (q.context?.length) {
+        questionContextEl.innerHTML = q.context.map(item => `<div>${escapeHTML(item)}</div>`).join('');
+        questionContextEl.classList.remove('hidden');
+      } else {
+        questionContextEl.classList.add('hidden');
+        questionContextEl.innerHTML = '';
+      }
     }
 
     const order = state.optionMaps[q.id] || [0,1,2,3];
-    els.optionsList.innerHTML = order.map((originalIndex, visualIndex) => {
-      const selected = state.answers[q.id] === originalIndex;
-      return `<button type="button" class="option-btn ${selected ? 'selected' : ''}" data-original-index="${originalIndex}">
-        <span class="option-letter">${LETTERS[visualIndex]}</span>
-        <span>${escapeHTML(q.options[originalIndex])}</span>
-      </button>`;
-    }).join('');
+    if (optionsListEl) {
+      optionsListEl.innerHTML = order.map((originalIndex, visualIndex) => {
+        const selected = state.answers[q.id] === originalIndex;
+        return `<button type="button" class="option-btn ${selected ? 'selected' : ''}" data-original-index="${originalIndex}">
+          <span class="option-letter">${LETTERS[visualIndex]}</span>
+          <span>${escapeHTML(q.options[originalIndex])}</span>
+        </button>`;
+      }).join('');
 
-    els.optionsList.querySelectorAll('.option-btn').forEach(btn => btn.addEventListener('click', () => {
-      state.answers[q.id] = Number(btn.dataset.originalIndex);
-      renderQuestion();
-      renderPalette();
-    }));
+      optionsListEl.querySelectorAll('.option-btn').forEach(btn => btn.addEventListener('click', () => {
+        state.answers[q.id] = Number(btn.dataset.originalIndex);
+        renderQuestion();
+        renderPalette();
+      }));
+    }
 
-    els.prevBtn.disabled = state.current === 0;
-    els.nextBtn.textContent = state.current === state.questions.length - 1 ? 'Semak sebelum hantar →' : 'Seterusnya →';
+    if (els.prevBtn) els.prevBtn.disabled = state.current === 0;
+    if (els.nextBtn) els.nextBtn.textContent = state.current === state.questions.length - 1 ? 'Semak sebelum hantar →' : 'Seterusnya →';
     renderPalette();
   }
 
