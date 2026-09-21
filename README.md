@@ -4,11 +4,11 @@ Modul statik (HTML/CSS/JS) yang boleh dibuka terus atau dimasukkan sebagai satu 
 
 ## Kandungan
 - 50 soalan objektif A–D.
-- 20 soalan asal daripada set peperiksaan pengguna dikekalkan sebagai soalan wajib.
-- 30 soalan baharu disusun sebagai 15 topik x 2 soalan.
+- 50 soalan objektif pelbagai topik untuk simulasi penuh.
+- 30 soalan latihan fokus disusun sebagai 15 topik x 2 soalan.
 - Dua mod:
   1. **Simulasi Penuh** — semua 50 soalan.
-  2. **Fokus Topik** — 30 soalan baharu, dua bagi setiap 15 topik.
+  2. **Fokus Topik** — 30 soalan, dua bagi setiap 15 topik.
 - Rawak susunan soalan dan pilihan jawapan.
 - Pemasa 50 minit (simulasi penuh) / 30 minit (fokus topik).
 - Palet nombor soalan, tanda untuk semak, kira soalan dijawab.

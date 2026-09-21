@@ -24,7 +24,7 @@
     studentName: $('#studentName'), studentClass: $('#studentClass'), startBtn: $('#startBtn'), startError: $('#startError'),
     shuffleQuestions: $('#shuffleQuestions'), shuffleOptions: $('#shuffleOptions'),
     candidateLabel: $('#candidateLabel'), timer: $('#timer'), answeredCount: $('#answeredCount'), totalCount: $('#totalCount'), progressBar: $('#progressBar'), questionPalette: $('#questionPalette'),
-    questionNumber: $('#questionNumber'), topicBadge: $('#topicBadge'), originalBadge: $('#originalBadge'), questionText: $('#questionText'), questionContext: $('#questionContext'), optionsList: $('#optionsList'),
+    questionNumber: $('#questionNumber'), topicBadge: $('#topicBadge'), questionText: $('#questionText'), questionContext: $('#questionContext'), optionsList: $('#optionsList'),
     prevBtn: $('#prevBtn'), nextBtn: $('#nextBtn'), markReview: $('#markReview'), submitBtn: $('#submitBtn'), quitBtn: $('#quitBtn'),
     scoreRing: $('#scoreRing'), scoreValue: $('#scoreValue'), percentageValue: $('#percentageValue'), resultTitle: $('#resultTitle'), resultSummary: $('#resultSummary'),
     chapterBreakdown: $('#chapterBreakdown'), hardTopic: $('#hardTopic'), studentFeedback: $('#studentFeedback'), saveFeedbackBtn: $('#saveFeedbackBtn'), feedbackStatus: $('#feedbackStatus'),
@@ -54,9 +54,9 @@
     const bank = window.QUESTION_BANK || [];
     let picked;
     if (state.mode === 'focus') {
-      picked = bank.filter(q => q.source === 'baru'); // 30 soalan = 15 topik x 2
+      picked = bank.filter(q => q.practiceSet === true); // 30 soalan = 15 topik x 2
     } else {
-      picked = [...bank]; // semua 50, termasuk 20 asal wajib
+      picked = [...bank]; // semua 50 soalan
     }
     if (els.shuffleQuestions.checked) picked = shuffle(picked);
     return picked.map(q => ({...q, options: [...q.options]}));
@@ -138,7 +138,6 @@
     if (!q) return;
     els.questionNumber.textContent = `Soalan ${state.current + 1} / ${state.questions.length}`;
     els.topicBadge.textContent = `${q.chapter} · ${q.topic}`;
-    els.originalBadge.classList.toggle('hidden', q.source !== 'asal');
     els.questionText.textContent = q.question;
     els.markReview.checked = !!state.reviews[q.id];
 
@@ -261,7 +260,7 @@
       if (filter === 'review' && !isReviewed) return '';
       const selectedText = selected === undefined ? 'Tidak dijawab' : q.options[selected];
       return `<article class="review-card ${correct ? 'correct' : 'wrong'}">
-        <div class="question-meta"><span class="pill">Soalan ${idx + 1}</span><span class="subtle-pill">${escapeHTML(q.chapter)} · ${escapeHTML(q.topic)}</span>${q.source === 'asal' ? '<span class="source-pill">SOALAN ASAL</span>' : ''}</div>
+        <div class="question-meta"><span class="pill">Soalan ${idx + 1}</span><span class="subtle-pill">${escapeHTML(q.chapter)} · ${escapeHTML(q.topic)}</span></div>
         <h4>${escapeHTML(q.question)}</h4>
         ${q.context?.length ? `<div class="context-box">${q.context.map(c => `<div>${escapeHTML(c)}</div>`).join('')}</div>` : ''}
         <div class="review-answer">Jawapan murid: <b class="${correct ? 'good-text' : 'wrong-text'}">${selected === undefined ? '—' : `${LETTERS[selected]}. ${escapeHTML(selectedText)}`}</b></div>
