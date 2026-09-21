@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HistoryVerse — Simulasi UASA Sejarah Tingkatan 1</title>
+  <meta name="theme-color" content="#5d35b1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">HISTORYVERSE · SEJARAH TINGKATAN 1</div>
+        <h1>Simulasi Peperiksaan UASA</h1>
+      </div>
+      <button id="historyBtn" class="ghost-btn" type="button">📊 Rekod Saya</button>
+    </header>
+
+    <section id="startScreen" class="panel start-panel">
+      <div class="hero-grid">
+        <div>
+          <span class="pill">Objektif · A–D · Semak automatik</span>
+          <h2>Masuk dewan peperiksaan maya ✨</h2>
+          <p class="lead">Set lengkap mengandungi <strong>50 soalan</strong>: 20 soalan asal wajib + 30 soalan tambahan. Selepas hantar, murid boleh terus lihat markah, peratus, topik kuat/lemah dan semakan jawapan.</p>
+
+          <div class="feature-row">
+            <div class="mini-card"><b>50</b><span>Soalan penuh</span></div>
+            <div class="mini-card"><b>15</b><span>Topik fokus</span></div>
+            <div class="mini-card"><b>Auto</b><span>Semak markah</span></div>
+          </div>
+        </div>
+        <div class="exam-ticket">
+          <div class="ticket-stamp">UASA</div>
+          <div class="ticket-line"><span>Subjek</span><b>Sejarah</b></div>
+          <div class="ticket-line"><span>Tingkatan</span><b>1</b></div>
+          <div class="ticket-line"><span>Bahagian</span><b>Objektif</b></div>
+          <div class="ticket-line"><span>Masa cadangan</span><b>50 minit</b></div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <label>Nama murid
+          <input id="studentName" type="text" maxlength="80" placeholder="Contoh: Nur Aisyah" autocomplete="name" />
+        </label>
+        <label>Kelas
+          <input id="studentClass" type="text" maxlength="40" placeholder="Contoh: 1 Adil" />
+        </label>
+      </div>
+
+      <div class="mode-grid">
+        <label class="mode-card selected">
+          <input type="radio" name="mode" value="full" checked />
+          <span class="mode-icon">📝</span>
+          <span><b>Simulasi Penuh</b><small>50 soalan · 20 asal + 30 baharu</small></span>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="mode" value="focus" />
+          <span class="mode-icon">🎯</span>
+          <span><b>Fokus Topik</b><small>30 soalan · 2 soalan bagi setiap 15 topik</small></span>
+        </label>
+      </div>
+
+      <div class="settings-row">
+        <label class="check"><input id="shuffleQuestions" type="checkbox" checked /> Rawakkan susunan soalan</label>
+        <label class="check"><input id="shuffleOptions" type="checkbox" /> Rawakkan pilihan jawapan</label>
+      </div>
+
+      <button id="startBtn" class="primary-btn wide" type="button">Mula Simulasi 🚀</button>
+      <p id="startError" class="error-text" role="alert"></p>
+    </section>
+
+    <section id="examScreen" class="hidden">
+      <div class="exam-layout">
+        <aside class="side-panel panel">
+          <div class="side-head">
+            <div>
+              <div class="eyebrow">CALON</div>
+              <strong id="candidateLabel">—</strong>
+            </div>
+            <div id="timer" class="timer">50:00</div>
+          </div>
+          <div class="progress-copy"><span id="answeredCount">0</span>/<span id="totalCount">50</span> dijawab</div>
+          <div class="progress-track"><div id="progressBar"></div></div>
+          <div id="questionPalette" class="palette" aria-label="Navigasi soalan"></div>
+          <button id="submitBtn" class="primary-btn wide" type="button">Hantar Jawapan</button>
+          <button id="quitBtn" class="ghost-btn wide" type="button">Keluar</button>
+        </aside>
+
+        <section class="panel question-panel">
+          <div class="question-meta">
+            <span id="questionNumber" class="pill">Soalan 1</span>
+            <span id="topicBadge" class="subtle-pill">Bab 1 · Asas Sejarah</span>
+            <span id="originalBadge" class="source-pill hidden">SOALAN ASAL</span>
+          </div>
+          <h2 id="questionText">Soalan akan muncul di sini.</h2>
+          <div id="questionContext" class="context-box hidden"></div>
+          <div id="optionsList" class="options-list"></div>
+          <div class="nav-row">
+            <button id="prevBtn" class="ghost-btn" type="button">← Sebelum</button>
+            <label class="review-toggle"><input id="markReview" type="checkbox" /> Tandakan untuk semak</label>
+            <button id="nextBtn" class="primary-btn" type="button">Seterusnya →</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="hidden">
+      <div class="panel result-hero">
+        <div class="score-ring" id="scoreRing">
+          <div><strong id="scoreValue">0/50</strong><span id="percentageValue">0%</span></div>
+        </div>
+        <div class="result-copy">
+          <div class="eyebrow">KEPUTUSAN SIMULASI</div>
+          <h2 id="resultTitle">Selesai!</h2>
+          <p id="resultSummary"></p>
+          <div class="result-actions">
+            <button id="reviewBtn" class="primary-btn" type="button">Semak Jawapan</button>
+            <button id="retryBtn" class="ghost-btn" type="button">Cuba Lagi</button>
+            <button id="printBtn" class="ghost-btn" type="button">Cetak Keputusan</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-grid">
+        <section class="panel">
+          <div class="section-heading">
+            <div><div class="eyebrow">ANALISIS</div><h3>Prestasi mengikut bab</h3></div>
+          </div>
+          <div id="chapterBreakdown" class="breakdown"></div>
+        </section>
+        <section class="panel">
+          <div class="section-heading">
+            <div><div class="eyebrow">SUARA MURID</div><h3>Refleksi selepas menjawab</h3></div>
+          </div>
+          <label>Topik yang saya rasa paling mencabar
+            <select id="hardTopic"></select>
+          </label>
+          <label>Komen ringkas
+            <textarea id="studentFeedback" rows="4" maxlength="300" placeholder="Contoh: Saya masih keliru beza sumber primer dan sekunder."></textarea>
+          </label>
+          <button id="saveFeedbackBtn" class="primary-btn wide" type="button">Simpan Refleksi</button>
+          <p id="feedbackStatus" class="success-text"></p>
+        </section>
+      </div>
+
+      <section id="reviewSection" class="panel hidden">
+        <div class="section-heading sticky-head">
+          <div><div class="eyebrow">SEMAKAN</div><h3>Jawapan & pembetulan</h3></div>
+          <div class="review-filters">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="wrong">Salah sahaja</button>
+            <button class="filter-btn" data-filter="review">Ditanda</button>
+          </div>
+        </div>
+        <div id="reviewList" class="review-list"></div>
+      </section>
+    </section>
+
+    <dialog id="historyDialog" class="history-dialog">
+      <div class="dialog-head">
+        <div><div class="eyebrow">REKOD TEMPATAN</div><h3>Percubaan saya</h3></div>
+        <button id="closeHistoryBtn" class="icon-btn" type="button" aria-label="Tutup">✕</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+      <div class="dialog-actions">
+        <button id="clearHistoryBtn" class="danger-btn" type="button">Padam rekod pada peranti ini</button>
+      </div>
+    </dialog>
+
+    <dialog id="confirmDialog" class="confirm-dialog">
+      <h3>Hantar jawapan sekarang?</h3>
+      <p id="confirmCopy">—</p>
+      <div class="dialog-actions two">
+        <button id="cancelSubmitBtn" class="ghost-btn" type="button">Sambung jawab</button>
+        <button id="confirmSubmitBtn" class="primary-btn" type="button">Ya, hantar</button>
+      </div>
+    </dialog>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
