@@ -75,16 +75,34 @@
     const bank = state.formLevel === '2' ? (window.QUESTION_BANK_T2 || []) : (window.QUESTION_BANK || []);
     let picked = [];
     if (state.formLevel === '2') {
-      // Tingkatan 2: tepat 2 soalan bagi setiap Bab 1–10 = 20 soalan.
-      // Set dicampur antara item fakta, stimulus, sebab-akibat dan aplikasi.
-      const patterns = { A: [0, 3], B: [1, 4], C: [2, 0], D: [2, 4] };
-      const chosen = patterns[state.mode] || patterns.A;
+      // Tingkatan 2: 20 soalan, tepat 2 soalan bagi setiap Bab 1–10.
+      // Agihan setiap set: 8 aras rendah + 8 sederhana + 4 tinggi.
+      // Pola diputar mengikut set supaya bab yang menerima soalan aras tinggi berubah.
+      const setOffset = { A: 0, B: 2, C: 4, D: 6 }[state.mode] ?? 0;
       const chapters = Array.from(new Set(bank.map(q => q.chapter)));
-      chapters.forEach(chapter => {
+
+      chapters.forEach((chapter, chapterIndex) => {
         const chapterItems = bank.filter(q => q.chapter === chapter);
-        chosen.forEach(index => {
-          if (chapterItems[index]) picked.push(chapterItems[index]);
-        });
+        const low = chapterItems.filter(q => q.level === 'rendah');
+        const medium = chapterItems.filter(q => q.level === 'sederhana');
+        const high = chapterItems.filter(q => q.level === 'tinggi');
+        const slot = (chapterIndex + setOffset) % 10;
+
+        let pair;
+        if (slot < 4) pair = [
+          low[(chapterIndex + setOffset) % Math.max(1, low.length)],
+          medium[(chapterIndex + setOffset) % Math.max(1, medium.length)]
+        ];
+        else if (slot < 8) pair = [
+          low[(chapterIndex + setOffset + 1) % Math.max(1, low.length)],
+          high[0]
+        ];
+        else pair = [
+          medium[(chapterIndex + setOffset) % Math.max(1, medium.length)],
+          medium[(chapterIndex + setOffset + 1) % Math.max(1, medium.length)]
+        ];
+
+        picked.push(...pair.filter(Boolean));
       });
     } else {
       // Tingkatan 1: empat set 20 soalan daripada bank sedia ada.
