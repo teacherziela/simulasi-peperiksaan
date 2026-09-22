@@ -4,7 +4,6 @@
   const LETTERS = ['A', 'B', 'C', 'D'];
   const STORAGE_KEY = 'historyverse_uasa_attempts_v2';
   const FEEDBACK_KEY = 'historyverse_uasa_feedback_v2';
-  const DATA_ENDPOINT = 'https://historyverse.hatchable.site/api/attempt';
 
   const state = {
     mode: 'A',
@@ -18,8 +17,7 @@
     timerId: null,
     student: { name: '', className: '' },
     result: null,
-    optionMaps: {},
-    attemptKey: ''
+    optionMaps: {}
   };
 
   const els = {
@@ -121,48 +119,6 @@
     });
   }
 
-  function makeAttemptKey() {
-    if (window.crypto?.randomUUID) return window.crypto.randomUUID();
-    return `hv-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-  }
-
-  async function syncAttempt(action = 'attempt') {
-    if (!state.attemptKey || !state.result) return false;
-    const payload = action === 'reflection'
-      ? {
-          action: 'reflection',
-          attemptKey: state.attemptKey,
-          hardTopic: els.hardTopic.value,
-          reflection: els.studentFeedback.value.trim()
-        }
-      : {
-          action: 'attempt',
-          attemptKey: state.attemptKey,
-          name: state.student.name,
-          className: state.student.className,
-          formLevel: Number(state.formLevel),
-          setCode: state.mode,
-          score: state.result.score,
-          total: state.result.total,
-          percentage: state.result.percentage,
-          secondsUsed: state.result.secondsUsed,
-          chapterStats: state.result.chapterStats,
-          topicStats: state.result.topicStats
-        };
-
-    try {
-      const response = await fetch(DATA_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true
-      });
-      return response.ok;
-    } catch {
-      return false;
-    }
-  }
-
   function startExam() {
     const name = els.studentName.value.trim();
     const className = els.studentClass.value.trim();
@@ -181,7 +137,6 @@
     state.startedAt = new Date();
     state.secondsLeft = 25 * 60;
     state.result = null;
-    state.attemptKey = makeAttemptKey();
     buildOptionMaps();
     els.startScreen.classList.add('hidden');
     els.resultScreen.classList.add('hidden');
@@ -313,7 +268,6 @@
     const secondsUsed = Math.max(0, (25 * 60) - state.secondsLeft);
     state.result = { score, total, percentage, chapterStats, topicStats, finishedAt, secondsUsed, auto };
     saveAttempt();
-    void syncAttempt('attempt');
     showResults();
   }
 
@@ -398,14 +352,13 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(attempts.slice(0, 20)));
   }
 
-  async function saveFeedback() {
+  function saveFeedback() {
     if (!state.result) return;
     const feedbacks = readJSON(FEEDBACK_KEY, []);
     const item = {
       name: state.student.name,
       className: state.student.className,
       formLevel: state.formLevel,
-      setCode: state.mode,
       score: state.result.score,
       total: state.result.total,
       percentage: state.result.percentage,
@@ -423,12 +376,7 @@
     };
     feedbacks.unshift(item);
     localStorage.setItem(FEEDBACK_KEY, JSON.stringify(feedbacks.slice(0, 50)));
-
-    els.feedbackStatus.textContent = 'Menyimpan refleksi...';
-    const synced = await syncAttempt('reflection');
-    els.feedbackStatus.textContent = synced
-      ? 'Refleksi dihantar kepada cikgu dan disimpan. ✓'
-      : 'Refleksi disimpan pada peranti. Sambungan data cikgu belum tersedia.';
+    els.feedbackStatus.textContent = 'Refleksi disimpan pada peranti ini. ✓';
   }
 
   function readJSON(key, fallback) {
