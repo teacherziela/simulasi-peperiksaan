@@ -76,31 +76,26 @@
     let picked = [];
     if (state.formLevel === '2') {
       // Tingkatan 2: 20 soalan, tepat 2 soalan bagi setiap Bab 1–10.
-      // Agihan setiap set: 8 aras rendah + 8 sederhana + 4 tinggi.
-      // Pola diputar mengikut set supaya bab yang menerima soalan aras tinggi berubah.
+      // Semua item dalam bank (termasuk soalan tambahan UASA 2026) bercampur secara rawak.
+      // Agihan kekal: 8 aras rendah + 8 sederhana + 4 tinggi.
       const setOffset = { A: 0, B: 2, C: 4, D: 6 }[state.mode] ?? 0;
       const chapters = Array.from(new Set(bank.map(q => q.chapter)));
 
       chapters.forEach((chapter, chapterIndex) => {
         const chapterItems = bank.filter(q => q.chapter === chapter);
-        const low = chapterItems.filter(q => q.level === 'rendah');
-        const medium = chapterItems.filter(q => q.level === 'sederhana');
-        const high = chapterItems.filter(q => q.level === 'tinggi');
+        const low = shuffle(chapterItems.filter(q => q.level === 'rendah'));
+        const medium = shuffle(chapterItems.filter(q => q.level === 'sederhana'));
+        const high = shuffle(chapterItems.filter(q => q.level === 'tinggi'));
         const slot = (chapterIndex + setOffset) % 10;
 
         let pair;
-        if (slot < 4) pair = [
-          low[(chapterIndex + setOffset) % Math.max(1, low.length)],
-          medium[(chapterIndex + setOffset) % Math.max(1, medium.length)]
-        ];
-        else if (slot < 8) pair = [
-          low[(chapterIndex + setOffset + 1) % Math.max(1, low.length)],
-          high[0]
-        ];
-        else pair = [
-          medium[(chapterIndex + setOffset) % Math.max(1, medium.length)],
-          medium[(chapterIndex + setOffset + 1) % Math.max(1, medium.length)]
-        ];
+        if (slot < 4) {
+          pair = [low[0], medium[0]];
+        } else if (slot < 8) {
+          pair = [low[0], high[0]];
+        } else {
+          pair = medium.length >= 2 ? [medium[0], medium[1]] : [medium[0], low[0]];
+        }
 
         picked.push(...pair.filter(Boolean));
       });
