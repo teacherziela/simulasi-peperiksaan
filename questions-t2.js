@@ -514,6 +514,157 @@ window.QUESTION_BANK_T2 = [
   }
 ];
 
+
+// Tambahan bank soalan daripada kertas UASA Tingkatan 2 2026.
+// Soalan ini digabungkan ke dalam bank sedia ada dan TIDAK dilabel kepada murid.
+window.QUESTION_BANK_T2.push(
+  {
+    id:'t2-uasa26-01', chapter:'Bab 1', topic:'Kerajaan Srivijaya', level:'rendah',
+    question:'Siapakah pengasas kerajaan Srivijaya?',
+    options:['Dapunta Hyang','Parameswara','Raja Melewar','Sultan Mansur Shah'],
+    answer:0,
+    explanation:'Dapunta Hyang Sri Jayanasa ialah pengasas kerajaan Srivijaya.'
+  },
+  {
+    id:'t2-uasa26-02', chapter:'Bab 1', topic:'Perkembangan Kerajaan Alam Melayu', level:'sederhana',
+    question:'Mengapakah kerajaan Alam Melayu mampu berkembang pesat pada zaman awal?',
+    options:['Kedudukan strategik','Hubungan dengan Portugis','Sokongan kuasa Barat','Kegiatan perindustrian'],
+    answer:0,
+    explanation:'Kedudukan strategik membantu kerajaan Alam Melayu berkembang melalui perdagangan dan hubungan dengan kerajaan luar.'
+  },
+  {
+    id:'t2-uasa26-03', chapter:'Bab 2', topic:'Sistem Pemerintahan', level:'sederhana',
+    question:'Apakah peranan utama golongan pembesar dalam kerajaan Alam Melayu?',
+    options:['Menguruskan perdagangan antarabangsa','Membantu raja dalam pentadbiran','Menguasai perdagangan rempah','Menyebarkan agama Hindu'],
+    answer:1,
+    explanation:'Golongan pembesar membantu raja dalam urusan pentadbiran kerajaan.'
+  },
+  {
+    id:'t2-uasa26-04', chapter:'Bab 2', topic:'Perdagangan Maritim', level:'sederhana',
+    question:'Mengapakah perdagangan maritim menjadi kegiatan ekonomi penting masyarakat Alam Melayu?',
+    options:['Kedudukan di laluan utama perdagangan','Hubungan rapat dengan Eropah','Perkembangan teknologi moden','Kewujudan perjanjian antarabangsa'],
+    answer:0,
+    explanation:'Kedudukan kerajaan Alam Melayu pada laluan perdagangan utama menggalakkan kegiatan perdagangan maritim.'
+  },
+  {
+    id:'t2-uasa26-05', chapter:'Bab 2', topic:'Hasil Hutan', level:'sederhana',
+    question:'Jadual berikut berkaitan dengan hasil hutan yang terdapat di Alam Melayu. Mengapakah hasil hutan tersebut mendapat permintaan tinggi daripada pedagang asing?',
+    context:['Gaharu — Sungai Mekong, Tanah Melayu dan Sumatera','Kapur barus — Sumatera dan Borneo'],
+    options:['Bahan makanan','Bahan pewangi','Bahan perubatan','Bahan perhiasan'],
+    answer:1,
+    explanation:'Gaharu dan kapur barus mendapat permintaan tinggi antaranya kerana digunakan sebagai bahan pewangi.'
+  },
+  {
+    id:'t2-uasa26-06', chapter:'Bab 3', topic:'Seni Bina Gangga Nagara', level:'rendah',
+    question:'Apakah bukti penemuan yang menunjukkan kerajaan Gangga Nagara mencapai kemajuan dalam bidang seni bina?',
+    options:['Patung Hindu','Kapal besar','Senjata','Patung Buddha'],
+    answer:3,
+    explanation:'Penemuan patung Buddha merupakan antara bukti seni bina masyarakat kerajaan Gangga Nagara.'
+  },
+  {
+    id:'t2-uasa26-07', chapter:'Bab 4', topic:'Kepercayaan Masyarakat Iban', level:'rendah',
+    question:'Gambar berikut menunjukkan kepercayaan masyarakat Iban dalam sambutan Perayaan Hari Gawai. Apakah kepercayaan masyarakat tersebut?',
+    context:['Ilustrasi menunjukkan masyarakat Iban menjalankan upacara semasa sambutan Hari Gawai.'],
+    options:['Animisme','Dinamisme','Liberalisme','Sekularisme'],
+    answer:0,
+    explanation:'Kepercayaan masyarakat tersebut dikaitkan dengan animisme.'
+  },
+  {
+    id:'t2-uasa26-08', chapter:'Bab 5', topic:'Pentadbiran Kesultanan Melayu Melaka', level:'rendah',
+    question:'Siapakah Bendahara terkenal yang membantu mengukuhkan Kesultanan Melayu Melaka?',
+    options:['Tun Seri Lanang','Tun Perak','Tun Mutahir','Tun Ali'],
+    answer:1,
+    explanation:'Tun Perak ialah Bendahara terkenal yang membantu mengukuhkan Kesultanan Melayu Melaka.'
+  },
+  {
+    id:'t2-uasa26-09', chapter:'Bab 5', topic:'Kedudukan Strategik Melaka', level:'sederhana',
+    question:'Mengapakah kedudukan Melaka di Selat Melaka penting kepada perkembangan perdagangan?',
+    options:['Memudahkan kapal berlabuh','Meningkatkan hasil pertanian','Menyebarkan agama Kristian','Menghapuskan ancaman Portugis'],
+    answer:0,
+    explanation:'Kedudukan di Selat Melaka memudahkan kapal singgah dan berlabuh untuk menjalankan perdagangan.'
+  },
+  {
+    id:'t2-uasa26-10', chapter:'Bab 6', topic:'Pengasasan Kesultanan Johor Riau', level:'rendah',
+    question:'Selepas kejatuhan Melaka, siapakah yang meneruskan pemerintahan dengan menubuhkan Kesultanan Johor Riau?',
+    options:['Sultan Mahmud Shah','Sultan Alauddin Riayat Shah II','Tun Seri Lanang','Sultan Mansur Shah'],
+    answer:1,
+    explanation:'Berdasarkan pilihan jawapan dalam set sumber, jawapan yang dimaksudkan ialah Sultan Alauddin Riayat Shah II.'
+  },
+  {
+    id:'t2-uasa26-11', chapter:'Bab 6', topic:'Kesinambungan Melaka', level:'sederhana',
+    question:'Johor Riau sering digelar penyambung kegemilangan Melaka. Apakah sebab utama gelaran ini diberikan?',
+    options:['Mewarisi sistem pentadbiran Melaka','Menjalin hubungan dengan Portugis','Menguasai Pulau Pinang','Menjadi pusat penyebaran Kristian'],
+    answer:0,
+    explanation:'Johor Riau meneruskan tradisi dan sistem pentadbiran Kesultanan Melayu Melaka.'
+  },
+  {
+    id:'t2-uasa26-12', chapter:'Bab 6', topic:'Warisan Kesultanan Melayu Melaka', level:'sederhana',
+    question:'Apakah faktor yang membuktikan Kesultanan Johor Riau mewarisi kegemilangan Kesultanan Melaka?',
+    options:['Mengamalkan sistem pembesar empat lipatan','Meniru sistem pemerintahan Barat sepenuhnya','Melantik pembesar dari Portugis','Menghapuskan pengaruh adat tempatan'],
+    answer:0,
+    explanation:'Penerusan sistem pembesar merupakan antara bukti kesinambungan warisan pentadbiran Melaka.'
+  },
+  {
+    id:'t2-uasa26-13', chapter:'Bab 7', topic:'Adat Istiadat Diraja', level:'sederhana',
+    question:'Antara berikut, yang manakah merupakan adat istiadat diraja?',
+    context:['I Adat berinai','II Sambutan perayaan','III Istiadat pemakaman','IV Adat pertabalan'],
+    options:['I dan II','I dan IV','II dan III','III dan IV'],
+    answer:3,
+    explanation:'Istiadat pemakaman dan adat pertabalan merupakan antara adat istiadat diraja.'
+  },
+  {
+    id:'t2-uasa26-14', chapter:'Bab 7', topic:'Adat Istiadat Kesultanan Melayu', level:'rendah',
+    question:'Gambar berikut berkaitan dengan adat istiadat Kesultanan Melayu di Negeri-Negeri Melayu. Apakah adat istiadat tersebut?',
+    context:['Ilustrasi menunjukkan pasangan pengantin duduk di atas pelamin dengan pengiring.'],
+    options:['Adat Berendoi','Adat Perkahwinan','Adat Pemakaman','Adat Berinai'],
+    answer:1,
+    explanation:'Ilustrasi tersebut menunjukkan adat perkahwinan.'
+  },
+  {
+    id:'t2-uasa26-15', chapter:'Bab 8', topic:'Pengasasan Negeri Sembilan', level:'sederhana',
+    question:'Mengapakah empat Penghulu Luak menjemput seorang Putera Minangkabau ke Negeri Sembilan pada tahun 1770?',
+    options:['Menjadi penasihat sultan','Mengetuai sistem pertahanan','Melantiknya sebagai pemerintah','Mengeratkan hubungan perdagangan'],
+    answer:2,
+    explanation:'Putera Minangkabau dijemput untuk dilantik sebagai pemerintah Negeri Sembilan.'
+  },
+  {
+    id:'t2-uasa26-16', chapter:'Bab 8', topic:'Hubungan Kedah dengan Siam', level:'sederhana',
+    question:'Setiap dua tahun, Kedah menghantar bunga emas ke Siam. Apakah maksud sebenar amalan ini?',
+    options:['Bayaran hutang','Tanda persahabatan dan perlindungan','Upacara agama','Hasil perdagangan'],
+    answer:1,
+    explanation:'Penghantaran bunga emas melambangkan hubungan persahabatan dan perlindungan.'
+  },
+  {
+    id:'t2-uasa26-17', chapter:'Bab 8', topic:'Hubungan Antara Negeri Melayu', level:'tinggi',
+    question:'Pada pendapat anda, apakah kepentingan hubungan kerajaan Kedah dan Perlis dengan negeri-negeri Melayu lain?',
+    options:['Mengukuhkan kestabilan politik','Menyebarkan agama Kristian','Membentuk pakatan dengan Eropah','Menguasai perdagangan candu'],
+    answer:0,
+    explanation:'Hubungan yang baik antara negeri dapat mengukuhkan kestabilan politik dan keselamatan.'
+  },
+  {
+    id:'t2-uasa26-18', chapter:'Bab 9', topic:'Adat Perpatih', level:'sederhana',
+    question:'Upacara berikut diadakan dalam Adat Perpatih. Mengapakah Upacara Kedim diadakan?',
+    context:['Upacara Kedim'],
+    options:['Proses pembahagian harta pusaka','Perkahwinan antara masyarakat lain','Pelaksanaan hukuman terhadap pesalah','Penerimaan orang luar menjadi ahli suku'],
+    answer:3,
+    explanation:'Upacara Kedim berkaitan penerimaan orang luar menjadi ahli suku.'
+  },
+  {
+    id:'t2-uasa26-19', chapter:'Bab 10', topic:'Sarawak dan Sabah dalam Alam Melayu', level:'sederhana',
+    question:'Sarawak dan Sabah dianggap sebahagian daripada Alam Melayu. Apakah bukti yang menunjukkan perkara ini?',
+    options:['Berkongsi bahasa dan budaya serumpun','Terletak di Lautan Hindi','Pernah dijajah Sepanyol','Diperintah secara republik'],
+    answer:0,
+    explanation:'Persamaan bahasa dan budaya serumpun menunjukkan Sarawak dan Sabah merupakan sebahagian daripada Alam Melayu.'
+  },
+  {
+    id:'t2-uasa26-20', chapter:'Bab 10', topic:'Keunikan Masyarakat Sarawak', level:'rendah',
+    question:'Apakah keunikan binaan rumah panjang di Sarawak?',
+    options:['Dibina di tepi pantai untuk menangkap ikan','Dibina secara bertingkat untuk menyimpan hasil pertanian','Dibina memanjang dan didiami oleh banyak keluarga','Dibina menggunakan batu-bata untuk pertahanan'],
+    answer:2,
+    explanation:'Rumah panjang dibina memanjang dan dihuni oleh banyak keluarga dalam satu komuniti.'
+  }
+);
+
 // Seimbangkan kedudukan jawapan betul A–D jika fungsi rawak pilihan jawapan dimatikan.
 window.QUESTION_BANK_T2 = window.QUESTION_BANK_T2.map((q, index) => {
   const shift = index % 4;
